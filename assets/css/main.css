@@ -55,6 +55,16 @@ body {
 	-webkit-text-size-adjust: none;
 }
 
+.blurred-number {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+  cursor: pointer;
+}
+
+.blurred-number:hover {
+  filter: blur(0);
+}
+
 mark {
 	background-color: transparent;
 	color: inherit;
