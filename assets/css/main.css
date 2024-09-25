@@ -2579,8 +2579,8 @@ input, select, textarea {
 		text-align: center;
 		margin-bottom: 20px;
 	}
-	
-		.image.fit.thumb img {
+
+	.image.fit.thumb img {
 		width: 100%;
 		max-width: 1080px;
 		height: auto;
