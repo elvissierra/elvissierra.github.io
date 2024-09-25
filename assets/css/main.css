@@ -2573,23 +2573,36 @@ input, select, textarea {
 /* Work Item */
 
 	.work-item {
-		margin: 0 0 2em 0;
-	}
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		margin-bottom: 20px;
+	  }
 
-		.work-item .image {
-			margin: 0 0 1.5em 0;
-		}
+	  .image.fit.thumb img {
+		width: 100%;
+		max-width: 1080px;
+		height: auto;
+		object-fit: cover;
+		border-radius: 5px;
+	  }
 
-		.work-item h3 {
-			font-size: 1em;
-			margin: 0 0 0.5em 0;
-		}
+	  .col-6 {
+		width: 50%;
+	  }
 
-		.work-item p {
-			font-size: 0.8em;
-			line-height: 1.5em;
-			margin: 0;
+	  .col-12-xsmall {
+		width: 100%;
+	  }
+
+	  
+	  @media screen and (max-width: 768px) {
+		.col-6 {
+		  width: 100%;
 		}
+	  }
+	
 
 /* Header */
 
