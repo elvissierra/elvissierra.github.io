@@ -2617,7 +2617,7 @@ input, select, textarea {
 		-moz-align-items: -moz-flex-end;
 		-webkit-align-items: -webkit-flex-end;
 		-ms-align-items: -ms-flex-end;
-		align-items: center;
+		align-items: flex-end;
 		-moz-justify-content: space-between;
 		-webkit-justify-content: space-between;
 		-ms-justify-content: space-between;
@@ -2675,6 +2675,7 @@ input, select, textarea {
 			border-radius: 50%;
 			object-fit: cover;
 			margin-bottom: 1em;
+			margin: 0 auto 1em auto;
 		}
 
 /* Footer */
