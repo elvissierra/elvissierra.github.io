@@ -1,130 +1,114 @@
-<!DOCTYPE HTML>
-<!--
-	Dev Portfolio.
--->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<title>Portfolio</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elvis Sierra - Software Engineer Portfolio</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dyauST9IivqkS+sxRj6C6CAuPda1MQUPSa5f3B/ESN23bkFDLQ5t3yqGoYv5iHvH" crossorigin="anonymous">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
-<body class="is-preload">
+<body>
+	<div class="container">
+    <!-- Header / Hero Section -->
+    	<header id="header">
+    	    <div class="header-inner">
+    	        <img src="images/avatar.jpg" alt="Elvis Sierra Avatar" class="avatar">
+    	        <h1>Elvis Sierra</h1>
+    	        <p class="headline">Backend Software Engineer </p>
+    	        <div class="icon-container">
+    	            <ul class="icons">
+    	                <li><a href="https://linkedin.com" target="_blank" class="icon fab fa-linkedin fa-2x"></a></li>
+						<li><a href="https://github.com" target="_blank" class="icon fab fa-github fa-2x"></a></li>
+						<li><a href="mailto:elvissierra3@gmail.com" class="icon fas fa-envelope fa-2x"></a></li>
 
-	<!-- Header -->
-	<header id="header">
-		<div class="inner">
-			<img src="images/avatar.jpg" alt="Elvis Sierra Avatar" class="avatar" />
-			<h1 style="text-align:center"><strong> Elvis Sierra </strong>
-				<div class="icon container">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/elvis-s-296804153?trk=people-guest_people_search-card"
-							class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-						<li><a href="https://github.com/elvissierra" 
-							class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="mailto:elvissierra3@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    	            </ul>
+    	        </div>
+    	    </div>
+    	</header>
 
-					</ul>
-				</div>
-		</div>
-	</header>
+    	<!-- Main Content -->
+    	<main id="main">
+    	    <!-- About Section -->
+    	    <section id="about" class="section">
+    	        <div class="content-container">
+    	            <h2>About Me</h2>
+    	            <p>
+    	                Hello, my name is Elvis, and I’m passionate about the endless possibilities programming offers.
+    	                From tackling complex challenges to experiencing moments of revelation when everything clicks.
+    	                I am committed to continuously expanding my knowledge, mastering the intricate details of code,
+    	                and contributing to a future we all envision.
+    	            </p>
+    	            <a href="images/fulls/SwE.pdf" class="button" download>Download Resume</a>
+    	        </div>
+    	    </section>
 
-	<!-- Main -->
-	<div id="main">
+    	    <!-- Projects Section -->
+    	    <section id="projects" class="section">
+    	        <h2 class="section-title">Recent Projects</h2>
+    	        <div class="projects-grid">
+    	            <div class="project-item">
+    	                <img src="images/thumbs/card1/test.gif" alt="Media Co-Lab Screenshot">
+    	                <div class="project-content">
+    	                    <h3>Media Co-Lab</h3>
+    	                    <p>Social media platform for entities to share work, ideas, and collaborate. Find out how your organization can leverage a platform for brainstorming new creations.</p>
+    	                </div>
+    	            </div>
+    	            <div class="project-item">
+    	                <img src="images/thumbs/card2/cre8ion.gif" alt="Cre8ion Screenshot">
+    	                <div class="project-content">
+    	                    <h3>Cre8ion</h3>
+    	                    <p>CAD model platform allowing users to upload/download and provide an introduction to the basics of 3D printing.</p>
+    	                </div>
+    	            </div>
+    	            <div class="project-item">
+    	                <img src="images/thumbs/card3/VSA.gif" alt="Search AI Screenshot">
+    	                <div class="project-content">
+    	                    <h3>Search AI</h3>
+    	                    <p>Video keyword search utilizing OpenAI's Whisper API to transcribe a video and allow users to search for keywords with timestamps.</p>
+    	                </div>
+    	            </div>
+    	            <div class="project-item">
+    	                <img src="images/thumbs/card4/brainstorm.gif" alt="TBD Screenshot">
+    	                <div class="project-content">
+    	                    <h3>Brainstorm Project</h3>
+    	                    <p>Details coming soon.</p>
+    	                </div>
+    	            </div>
+    	        </div>
+    	    </section>
 
-		<!-- One -->
-		<section id="one">
-			<header class="major">
-				<h2> Hello, my name is Elvis, and I’m passionate about the endless possibilities programming offers.
-					From tackling complex challenges to experiencing the moments of revelation when everything clicks.
-					Committed to continuously expanding my knowledge and trying to master the intricate details of
-					code and the tools that bring it to life. I thrive in an ever-evolving technological landscape,
-					driven by a desire to contribute to a future we all envision. As I advance in my journey,
-					also dedicated to playing my part in fostering growth and innovation.
-					<br />
-			</header>
-
-			<ul class="actions">
-				<li><a href="images/fulls/SwE.pdf" class="button">Resume</a></li>
-			</ul>
-		</section>
-
-		<!-- Two -->
-		<section id="two">
-			<h1 style="text-align:center; color:rgb(51, 50, 114)">Recent Projects</h1>
-			<div class="row">
-				<article class="col-6 col-12-xsmall work-item">
-					<a href="images/fulls/card1/mediacolab.gif" class="image fit thumb"><img src="images/thumbs/card1/mediacolab.gif" alt="" /></a>
-					<h3 style="font-size: 150%; color:rgb(51, 50, 114);">Media Co-Lab</h3>
-					<p style="font-size: 100%;">
-						Social media platform for entinties to share work, ideas, and collaborate. Find out how your organization can leverage a platform for brianstorming new creations. 
-					</p>
-				</article>
-				<article class="col-6 col-12-xsmall work-item">
-					<a href="images/fulls/card2/cre8ion.gif" class="image fit thumb"><img src="images/thumbs/card2/cre8ion.gif" alt="Cre8ion Thumbnail" /></a>
-					<h3 style="font-size: 150%; color:rgb(51, 50, 114);">Cre8ion</h3>
-					<p style="font-size: 100%;">
-						CAD model platform allowing users to upload/download, and provide an intro to the basics of 3D printing.
-					</p>
-				</article>
-				<article class="col-6 col-12-xsmall work-item">
-					<a href="images/fulls/card3/VSA.gif" class="image fit thumb"><img src="images/thumbs/card3/VSA.gif" alt="" /></a>
-					<h3 style="font-size: 150%; color:rgb(51, 50, 114);">Search AI</h3>
-					<p style="font-size: 100%;">
-						Video keyword search, utilizing Openai's whisper api to transcribe a video and allow users to search for keywords providing timestamps.
-					</p>
-				</article>
-				<article class="col-6 col-12-xsmall work-item">
-					<a href="images/fulls/card4/brainstorm.gif" class="image fit thumb"><img src="images/thumbs/card4/brainstorm.gif" alt="" /></a>
-					<h3 style="font-size: 150%; color:rgb(51, 50, 114);">TBD</h3>
-					<p style="font-size: 100%;">
-						.
-					</p>
-				</article>
-
-		</section>
-		<!-- Three -->
-		<section id="three">
-			<p style="text-align: center;">
-				Thank you for visiting!
-			</p>
-			<div class="col-4 col-12-small">
-				<ul class="labeled-icons">
-					<li>
-						<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-						Austin, TX <br />
-					</li>
-					<li>
-						<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-						<span class="blurred-number">361-703-7092</span>
-					</li>
-					<li>
-						<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-						elvissierra3@gmail.com</a>
-					</li>
-				</ul>
-			</div>
+    	    <!-- Contact Section -->
+    	    <section id="contact" class="section">
+    	        <h2>Contact Me</h2>
+    	        <div class="contact-container">
+    	            <ul class="contact-info">
+    	                <li><i class="icon fa-home"></i> Austin, TX</li>
+    	                <li><i class="icon fa-mobile-alt"></i> <span class="blurred-number">361-703-7092</span></li>
+    	                <li><i class="icon fa-envelope"></i> <a href="mailto:elvissierra3@gmail.com">elvissierra3@gmail.com</a></li>
+    	            </ul>
+    	        </div>
+    	    </section>
+    	</main>
 	</div>
 
-	</section>
+    	<!-- Footer -->
+    	<footer id="footer">
+    	    <p>&copy; 2024 Elvis Sierra. All Rights Reserved.</p>
+    	</footer>
 
-	</div>
-
-	<!-- Footer -->
-	<footer id="footer">
-
-	</footer>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.poptrox.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>x
-
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>x
 </body>
 
 </html>
