@@ -99,7 +99,7 @@ code {
 #main {
     margin-left: 25%;
     width: 75%;
-    padding: 3em;
+    padding: 4vh 3vw;
     background-color: #f4f4f4;
     overflow: auto;
 	box-sizing: border-box;
@@ -162,18 +162,20 @@ code {
 
 /* Projects Section */
 .projects-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 30px;
-	padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+	scroll-snap-type: y mandatory;
 }
 
 .project-item {
-	background: #fff;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition: box-shadow 0.3s ease-in-out;
+    scroll-snap-align: start;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .project-item img {
@@ -184,6 +186,8 @@ code {
 
 .project-item:hover {
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* Button */
@@ -235,7 +239,7 @@ code {
 	#header {
 		background-position: center;
 		padding: 6em 4em;
-		position: fixed;
+		position: relative;
 		text-align: center;
 		top: 0;
 		width: 100%;
@@ -244,7 +248,7 @@ code {
 
 	#main {
 		margin: 0;
-		padding: 6em 4em;
+		padding: 2em 1em;
 		width: 100%;
 	}
 }
@@ -257,6 +261,10 @@ code {
 	#main {
 		padding: 2.25em 1.5em 0.25em 1.5em;
 	}
+	.projects-grid {
+        padding: 10px;
+        gap: 20px;
+    }
 } 
 
 @media screen and (max-width: 480px) {
