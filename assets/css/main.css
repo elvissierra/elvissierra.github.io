@@ -57,10 +57,18 @@ p {
 }
 
 h1, h2, h3 {
-	color: #787878;
+	color: #d2cfcf;
 	font-weight: 400;
 	line-height: 1em;
 	margin: 0 0 1em 0;
+}
+
+h2, h3 {
+	color: rgba(56, 122, 82, 0.992);
+	font-weight: 400;
+	line-height: 3em;
+	margin: 0 0 0 0;
+	font-size: 20pt;
 }
 
 code {
@@ -97,11 +105,9 @@ code {
 
 /* Main */
 #main {
-    margin-left: 25%;
+    margin-left: 20%;
     width: 75%;
-    padding: 4vh 3vw;
     background-color: #f4f4f4;
-    overflow: auto;
 	box-sizing: border-box;
 	overflow: hidden;
 }
@@ -118,14 +124,14 @@ code {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 35% auto;
-	color: rgba(255, 255, 255, 0.5);
+	color: #fff;
 	height: 100vh;
 	left: 0;
 	padding: 2em;
 	position: fixed;
 	text-align: center;
 	top: 0;
-	width: 25%;
+	width: 20%;
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
 	overflow: hidden;
@@ -162,33 +168,70 @@ code {
 
 /* Projects Section */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 20px;
-	scroll-snap-type: y mandatory;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 10px;
 }
 
 .project-item {
-    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
-}
-
-.project-item img {
-	width: 100%;
-	border-radius: 10px;
-	object-fit: cover;
+    max-width: 100%;
 }
 
 .project-item:hover {
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.project-thumbnail {
+    width: 50%; /* Adjust the width to what fits best in your layout */
+    position: relative;
+    margin-right: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-thumbnail::before {
+    content: "";
+    display: block;
+    padding-bottom: 60%; /* This maintains a 3:4 aspect ratio (4 / 3 * 100) */
+}
+
+.project-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    border-radius: 10px;
+}
+
+.project-content {
+    flex: 1; /* Takes the remaining space */
+}
+
+.project-content h3 {
+    font-size: 1.5em;
+    color: #787878;
+	text-align: center;
+}
+
+.project-content p {
+    font-size: .9em;
+    color: #868585;
+    line-height: 1.6em;
+}
+
 
 /* Button */
 .button {
@@ -208,6 +251,7 @@ code {
 	text-align: center;
 	text-decoration: none;
 	white-space: nowrap;
+	border-color: rgb(103, 136, 107);
 }
 
 .button:hover {
@@ -265,6 +309,20 @@ code {
         padding: 10px;
         gap: 20px;
     }
+    .project-item {
+        flex-direction: column;  /* Stack image and text vertically */
+        text-align: center;  /* Center-align text for smaller devices */
+    }
+
+    .project-thumbnail {
+        margin-right: 0;
+        margin-bottom: 20px;  /* Space between image and text when stacked */
+        width: 100%;  /* Allow image to expand fully on smaller screens */
+    }
+
+    .project-content {
+        width: 100%;
+	}
 } 
 
 @media screen and (max-width: 480px) {
@@ -275,7 +333,7 @@ code {
 
 #footer {
     color: rgba(56, 122, 82, 0.992);
-    text-align:center;
+    text-align: center;
     padding: 1em;
     width: 100%;
 	justify-content: center;
