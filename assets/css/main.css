@@ -303,6 +303,80 @@ code {
 	color: #49bf9d;
 }
 
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
+    padding-top: 60px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5);
+	
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbbbbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 400px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	position: relative;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+    font-size: 1em;
+    color: #fff;
+}
+
 /* Media Queries */
 @media screen and (max-width: 1280px) {
 	#header {

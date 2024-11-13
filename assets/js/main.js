@@ -112,6 +112,83 @@
 					windowMargin: (breakpoints.active('<=small') ? 0 : 50)
 				});
 
+			})
+
+			const projectsData = {
+				1: [
+					{ src: "images/fulls/card1/01.gif", caption: "Keyword Video Search - Slide 1" },
+					{ src: "images/fulls/card1/02.gif", caption: "Keyword Video Search - Slide 2" },
+					{ src: "images/fulls/card1/03.gif", caption: "Keyword Video Search - Slide 3" },
+				],
+				2: [
+					{ src: "images/fulls/card2/mediacolab.gif", caption: "Media Co-Lab - Slide 1" },
+					{ src: "images/fulls/card2/02.gif", caption: "Media Co-Lab - Slide 2" },
+					{ src: "images/fulls/card2/03.gif", caption: "Media Co-Lab - Slide 3" },
+				],
+				3: [
+					{ src: "images/fulls/card3/cre8ion.gif", caption: "Cre8ion - Slide 1" },
+					{ src: "images/fulls/card3/02.gif", caption: "Cre8ion - Slide 2" },
+					{ src: "images/fulls/card3/03.gif", caption: "Cre8ion - Slide 3" },
+				],
+				4: [
+					{ src: "images/fulls/card4/brainstorm.gif", caption: "Brainstorm - Slide 1" },
+					{ src: "images/fulls/card4/02.gif", caption: "Brainstorm - Slide 2" },
+					{ src: "images/fulls/card4/03.gif", caption: "Brainstorm - Slide 3" },
+				]
+			};
+			
+
+			$(document).ready(function() {
+				initializeProjectModal();
 			});
+			
+			function initializeProjectModal() {
+				$('.project-thumbnail img').on('click', function() {
+					let modal = document.getElementById("projectModal");
+					let swiperWrapper = modal.querySelector('.swiper-wrapper');
+			
+					swiperWrapper.innerHTML = '';
+			
+					let projectId = $(this).closest('.project-item').data('project');
+			
+					if (projectsData[projectId]) {
+						projectsData[projectId].forEach(slide => {
+							swiperWrapper.innerHTML += `
+								<div class="swiper-slide">
+									<img src="${slide.src}" alt="${slide.caption}">
+									<div class="slide-caption">${slide.caption}</div>
+								</div>`;
+						});
+					}
+			
+					if (window.projectSwiper) {
+						window.projectSwiper.update();
+					} else {
+						window.projectSwiper = new Swiper('.swiper-container', {
+							navigation: {
+								nextEl: '.swiper-button-next',
+								prevEl: '.swiper-button-prev',
+							},
+							loop: true
+						});
+					}
+			
+					modal.style.display = "block";
+				});
+			
+				$('.close').on('click', function() {
+					$('#projectModal').hide();
+				});
+			
+				$(window).on('click', function(event) {
+					let modal = document.getElementById("projectModal");
+					if (event.target === modal) {
+						modal.style.display = "none";
+					}
+				});
+			}
+			
+			
+		
 
 })(jQuery);

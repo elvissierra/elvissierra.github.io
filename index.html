@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elvis Sierra - Software Engineer Portfolio</title>
     <link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
@@ -52,7 +53,7 @@
     	    <section id="projects" class="section">
     	        <h2 class="section-title">Recent Projects</h2>
     	        <div class="projects-grid">
-					<div class="project-item">
+					<div class="project-item" data-project="1">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card1/vid_search.gif" alt="Keyword Video Search Screenshot">
 						</div>
@@ -63,8 +64,9 @@
 							</p>
 						</div>
 					</div>
+
 					
-					<div class="project-item">
+					<div class="project-item" data-project="2">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card2/mediacolab.gif" alt="Media Co-Lab Screenshot">
 						</div>
@@ -76,7 +78,7 @@
 						</div>
 					</div>
 
-					<div class="project-item">
+					<div class="project-item" data-project="3">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card3/cre8ion.gif" alt="Cre8ion Screenshot">
 						</div>
@@ -89,7 +91,7 @@
 					</div>
 					
 					
-					<div class="project-item">
+					<div class="project-item" data-project="4">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card4/brainstorm.gif" alt="Brainstorm">
 						</div>
@@ -102,6 +104,19 @@
 					</div>
     	        </div>
     	    </section>
+
+			<div id="projectModal" class="modal">
+				<span class="close">&times;</span>
+				<div class="modal-content">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<!-- Slides will be inserted dynamically -->
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+			</div>
 
     	    <!-- Contact Section -->
     	    <section id="contact" class="section">
@@ -128,7 +143,8 @@
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>x
+		<script src="assets/js/main.js"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>
