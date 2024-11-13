@@ -359,8 +359,11 @@ code {
 }
 
 .swiper-slide img {
-    width: 100%;
+    max-width: 80%;
+	max-height: 80hv;
+	width: auto;
     height: auto;
+	object-fit: cover;
     border-radius: 10px;
 }
 
