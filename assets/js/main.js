@@ -116,19 +116,19 @@
 
 			const projectsData = {
 				1: [
-					{ src: "images/fulls/card1/01.gif", caption: "Keyword Video Search - Slide 1" },
-					{ src: "images/fulls/card1/02.gif", caption: "Keyword Video Search - Slide 2" },
-					{ src: "images/fulls/card1/03.gif", caption: "Keyword Video Search - Slide 3" },
+					{ src: "images/fulls/card1/01.gif", caption: " Creating a new record for keyword searches." },
+					{ src: "images/fulls/card1/02.gif", caption: " Using a previous record to search for keywords within the video." },
 				],
 				2: [
-					{ src: "images/fulls/card2/mediacolab.gif", caption: "Media Co-Lab - Slide 1" },
-					{ src: "images/fulls/card2/02.gif", caption: "Media Co-Lab - Slide 2" },
-					{ src: "images/fulls/card2/03.gif", caption: "Media Co-Lab - Slide 3" },
+					{ src: "images/fulls/card2/orgoverview.gif", caption: " Organizational Layout " },
+					{ src: "images/fulls/card2/labels.gif", caption: " Labeling and tagging system " },
+					{ src: "images/fulls/card2/media.gif", caption: " Media discussions " },
+					{ src: "images/fulls/card2/teams.gif", caption: " Team based " },
 				],
 				3: [
-					{ src: "images/fulls/card3/cre8ion.gif", caption: "Cre8ion - Slide 1" },
-					{ src: "images/fulls/card3/02.gif", caption: "Cre8ion - Slide 2" },
-					{ src: "images/fulls/card3/03.gif", caption: "Cre8ion - Slide 3" },
+					{ src: "images/fulls/card3/cre8ion.gif", caption: " Model Ranking " },
+					{ src: "images/fulls/card3/02.gif", caption: " Teaching AI " },
+					{ src: "images/fulls/card3/03.gif", caption: " Model upload and library " },
 				],
 				4: [
 					{ src: "images/fulls/card4/brainstorm.gif", caption: "Brainstorm - Slide 1" },
