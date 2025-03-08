@@ -19,7 +19,11 @@
     <!-- Header / Hero Section -->
     	<header id="header">
     	    <div class="header-inner">
-    	        <img src="images/avatar.jpg" alt="Elvis Sierra Avatar" class="avatar">
+    	        <img src="images/avatar.jpg" 
+				srcset="images/avatar-small.jpg 480w, images/avatar-medium.jpg 800w, images/avatar.jpg 1200w" 
+				sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px" 
+				alt="My Avatar" 
+				class="avatar">
     	        <h1>Elvis Sierra</h1>
     	        <p class="headline">Backend Software Engineer </p>
     	        <div class="icon-container">
@@ -60,12 +64,10 @@
 						<div class="project-content">
 							<h3>Keyword Video Search</h3>
 							<p>Video keyword search utilizing OpenAI's Whisper API to transcribe a video and allow users to search for keywords with timestamps. 
-								
 							</p>
 						</div>
 					</div>
 
-					
 					<div class="project-item" data-project="2">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card2/mediacolab.gif" alt="Media Co-Lab Screenshot">
