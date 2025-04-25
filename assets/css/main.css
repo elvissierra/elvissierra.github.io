@@ -294,10 +294,10 @@ code {
 
 .project-item {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     background: #fff;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     max-width: 100%;
@@ -310,7 +310,7 @@ code {
 }
 
 .project-thumbnail {
-    width: 50%;
+    width: 40%;
     position: relative;
     margin-right: 20px;
     overflow: hidden;
@@ -332,10 +332,18 @@ code {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.project-thumbnail:hover img {
+    transform: scale(1.05);
 }
 
 .project-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-content h3 {
@@ -345,9 +353,240 @@ code {
 }
 
 .project-content p {
-    font-size: .9em;
+    font-size: 0.9em;
     color: #868585;
     line-height: 1.6em;
+    margin-bottom: 1em;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-bottom: 1em;
+}
+
+.tech-tag {
+    background: rgba(230, 160, 103, 0.1);
+    color: #e6a067;
+    padding: 0.3em 0.8em;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.tech-details-btn {
+    background: transparent;
+    border: 2px solid #e6a067;
+    color: #e6a067;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    align-self: flex-start;
+}
+
+.tech-details-btn:hover {
+    background: #e6a067;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    margin: 0;
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    position: absolute;
+    background: transparent;
+    transition: transform 0.3s ease;
+}
+
+.tech-modal {
+    max-width: 600px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 2em;
+    margin: 10% auto;
+}
+
+.close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.close:hover,
+.close:focus {
+    color: #e6a067;
+    text-decoration: none;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Swiper Container Styles */
+.swiper-container {
+    width: 100%;
+    height: 70vh;
+    max-height: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+    transition: opacity 0.3s ease;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+    max-width: 80%;
+    font-size: 1em;
+    color: #fff;
+    z-index: 10;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #e6a067;
+    background: transparent;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 32px;
+    font-weight: 900;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.swiper-button-prev {
+    left: 20px;
+}
+
+.swiper-button-next {
+    right: 20px;
+}
+
+/* Technical Details Modal */
+.tech-content {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+.tech-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tech-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.tech-content::-webkit-scrollbar-thumb {
+    background: #e6a067;
+    border-radius: 4px;
+}
+
+.tech-content::-webkit-scrollbar-thumb:hover {
+    background: #d48c54;
+}
+
+.tech-details h4 {
+    color: #e6a067;
+    margin: 1.5em 0 0.5em;
+    font-size: 1.2em;
+}
+
+.tech-details h4:first-child {
+    margin-top: 0;
+}
+
+.tech-details ul {
+    list-style: disc;
+    padding-left: 1.5em;
+    margin: 1em 0;
+}
+
+.tech-details li {
+    margin-bottom: 0.5em;
+    line-height: 1.4;
 }
 
 /* Contact Section */
@@ -461,83 +700,6 @@ code {
     transform: translateX(5px);
 }
 
-/* Modal Styles */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000;
-    padding-top: 60px; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.5);
-	
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    position: relative;
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #ffffff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbbbbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.swiper-container {
-    width: 100%;
-    height: 400px;
-}
-
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: rgba(0, 0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	position: relative;
-}
-
-.swiper-slide img {
-    max-width: 80%;
-	max-height: 80hv;
-	width: auto;
-    height: auto;
-	object-fit: cover;
-    border-radius: 10px;
-}
-
-.slide-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    max-width: 80%;
-    font-size: 1em;
-    color: #fff;
-}
-
 /* Section Titles */
 .section-title {
     color: #e6a067;
@@ -609,24 +771,67 @@ code {
     }
     .project-item {
         flex-direction: column;
-        text-align: center
     }
 
     .project-thumbnail {
-        margin-right: 0;
-        margin-bottom: 20px;
         width: 100%;
+        margin-right: 0;
+        margin-bottom: 1em;
     }
 
     .project-content {
         width: 100%;
-	}
+    }
+
+    .tech-details-btn {
+        align-self: center;
+    }
 } 
 
 @media screen and (max-width: 480px) {
 	#header {
 		padding: 4.5em 1.5em;
 	}
+}
+
+@media screen and (max-width: 768px) {
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-width: 100%;
+    }
+
+    .swiper-container {
+        height: 50vh;
+        max-height: 500px;
+    }
+
+    .close {
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 50px;
+        height: 50px;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 28px;
+    }
+
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    .swiper-button-next {
+        right: 10px;
+    }
 }
 
 /* Footer */
@@ -637,4 +842,29 @@ code {
     width: 100%;
     margin: 0;
     background-color: #f4f4f4;
+}
+
+/* Loading State */
+.swiper-slide.loading {
+    position: relative;
+}
+
+.swiper-slide.loading:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e6a067;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
