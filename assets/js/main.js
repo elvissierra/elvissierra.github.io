@@ -69,28 +69,40 @@
 					settings.parallax = false;
 
 			if (settings.parallax) {
+				let ticking = false;
+				let lastScrollY = 0;
+				const header = $header[0];
 
 				breakpoints.on('<=medium', function() {
-
 					$window.off('scroll.strata_parallax');
 					$header.css('background-position', '');
-
 				});
 
 				breakpoints.on('>medium', function() {
-
-					$header.css('background-position', 'left 0px');
+					$header.css('background-position', 'center 0px');
 
 					$window.on('scroll.strata_parallax', function() {
-						$header.css('background-position', 'left ' + (-1 * (parseInt($window.scrollTop()) / settings.parallaxFactor)) + 'px');
+						if (!ticking) {
+							window.requestAnimationFrame(function() {
+								const currentScrollY = $window.scrollTop();
+								const delta = currentScrollY - lastScrollY;
+								
+								// Only update if scroll amount is significant
+								if (Math.abs(delta) > 1) {
+									$header.css('background-position', 'center ' + (-1 * (currentScrollY / settings.parallaxFactor)) + 'px');
+									lastScrollY = currentScrollY;
+								}
+								
+								ticking = false;
+							});
+							ticking = true;
+						}
 					});
-
 				});
 
 				$window.on('load', function() {
 					$window.triggerHandler('scroll');
 				});
-
 			}
 
 	// Main Sections: Two.

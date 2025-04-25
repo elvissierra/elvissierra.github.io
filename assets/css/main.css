@@ -25,6 +25,7 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0;
+	padding: 0;
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
 	font-size: 13pt;
 	font-weight: 400;
@@ -33,6 +34,9 @@ body {
 	background-color: #f4f4f4;
 	line-height: 1.6;
 	scroll-behavior: smooth;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -83,10 +87,12 @@ code {
 /* Containers and Layouts */
 .container {
 	flex: 1;
-	margin: 0 auto;
-	max-width: calc(100% - 4em);
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
 	width: 100%;
 	overflow: hidden;
+	position: relative;
 }
 
 .row {
@@ -110,6 +116,13 @@ code {
     background-color: #f4f4f4;
 	box-sizing: border-box;
 	overflow: hidden;
+	padding: 2em;
+	will-change: transform;
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
 }
 
 /* Header */
@@ -122,7 +135,7 @@ code {
 	background-image: url("../../images/bg3.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 35% auto;
+	background-size: cover;
 	color: #fff;
 	height: 100vh;
 	left: 0;
@@ -135,6 +148,22 @@ code {
 	box-sizing: border-box;
 	overflow: hidden;
 	font-size: 16pt;
+	will-change: transform;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	margin: 0;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-ms-perspective: 1000;
+	perspective: 1000;
 }
 
 #header .avatar {
@@ -385,6 +414,7 @@ code {
 	#header {
 		padding: 6em 3em 3em 3em;
 		width: 30%;
+		background-size: cover;
 	}
 
 	#main {
@@ -397,12 +427,15 @@ code {
 @media screen and (max-width: 980px) {
 	#header {
 		background-position: center;
+		background-size: cover;
 		padding: 6em 4em;
 		position: relative;
 		text-align: center;
 		top: 0;
 		width: 100%;
 		display: block;
+		height: auto;
+		min-height: 100vh;
 	}
 
 	#main {
@@ -415,6 +448,7 @@ code {
 @media screen and (max-width: 736px) {
 	#header {
 		padding: 2.25em 1.5em;
+		background-size: cover;
 	}
 
 	#main {
@@ -446,9 +480,12 @@ code {
 	}
 }
 
+/* Footer */
 #footer {
     color: rgba(56, 122, 82, 0.992);
     text-align: center;
     padding: 1em;
     width: 100%;
+    margin: 0;
+    background-color: #f4f4f4;
 }
