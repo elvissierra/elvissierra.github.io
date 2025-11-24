@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elvis Sierra - Software Engineer Portfolio</title>
+    <title>Elvis Sierra - Backend &amp; Data Engineer</title>
     <link rel="preload" href="images/bg3.jpg" as="image" type="image/jpeg">
     <link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-dyauST9IivqkS+sxRj6C6CAuPda1MQUPSa5f3B/ESN23bkFDLQ5t3yqGoYv5iHvH" crossorigin="anonymous">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
@@ -23,18 +23,37 @@
     	        <img src="images/avatar.jpg" 
 				srcset="images/avatar-small.jpg 480w, images/avatar-medium.jpg 800w, images/avatar.jpg 1200w" 
 				sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px" 
-				alt="Elvis Sierra - Software Engineer" 
+				alt="Elvis Sierra - Backend &amp; Data Engineer" 
 				class="avatar">
     	        <h1>Elvis Sierra</h1>
-    	        <p class="headline">Backend Software Engineer</p>
-    	        <p class="subheadline">Building robust and scalable solutions</p>
+				<p class="headline">Backend &amp; Data Engineer</p>
+				<p class="subheadline">Designing reliable APIs, ETL pipelines, and data-driven systems</p>
     	        <div class="icon-container">
-    	            <ul class="icons">
-    	                <li><a href="www.linkedin.com/in/elvis-s-296804153" target="_blank" class="icon fab fa-linkedin fa-2x" title="Connect on LinkedIn"></a></li>
-						<li><a href="https://github.com/elvissierra" target="_blank" class="icon fab fa-github fa-2x" title="View my GitHub"></a></li>
-						<li><a href="mailto:elvissierra3@gmail.com" class="icon fas fa-envelope fa-2x" title="Contact me"></a></li>
-    	            </ul>
-    	        </div>
+			    <ul class="icons">
+			        <li>
+			            <a href="https://www.linkedin.com/in/elvis-s-296804153"
+			               target="_blank"
+			               class="icon fab fa-linkedin fa-2x"
+			               title="Connect on LinkedIn"></a>
+			        </li>
+			        <li>
+			            <a href="https://github.com/elvissierra"
+			               target="_blank"
+			               class="icon fab fa-github fa-2x"
+			               title="View my GitHub"></a>
+			        </li>
+			        <li>
+			            <a href="mailto:elvissierra3@gmail.com"
+			               class="icon fas fa-envelope fa-2x"
+			               title="Contact me"></a>
+			        </li>
+			    </ul>
+			</div>
+			<nav class="nav-links">
+			    <a href="#about">About</a>
+			    <a href="#projects">Projects</a>
+			    <a href="#contact">Contact</a>
+			</nav>
     	    </div>
     	</header>
 
@@ -45,23 +64,25 @@
     	        <div class="content-container">
     	            <h2>About Me</h2>
     	            <p>
-    	                Hello! I'm Elvis, a passionate Backend Software Engineer with a focus on building robust and scalable solutions. 
-    	                I thrive on tackling complex challenges and transforming them into elegant, efficient code.
-    	            </p>
-    	            <p>
-    	                My expertise lies in developing high-performance backend systems, optimizing database operations, 
-    	                and creating seamless API integrations. I'm committed to writing clean, maintainable code and 
-    	                following best practices in software development.
-    	            </p>
+					    Hello, I'm Elvis – a backend and data engineer focused on building reliable systems that make complex data problems
+					    feel simple to work with. I enjoy taking loosely defined ideas, shaping them into clear architectures, and shipping
+					    code that people can depend on.
+					</p>
+					<p>
+					    My experience spans ETL pipelines, API and service design, and database-backed applications. I care about clean,
+					    maintainable implementations, observability, and using data to drive decisions – whether that’s powering internal
+					    reporting tools or architecting collaborative platforms.
+					</p>
     	            <div class="skills-container">
     	                <h3>Technical Skills</h3>
     	                <ul class="skills-list">
-    	                    <li>Backend Development</li>
-    	                    <li>Database Design & Optimization</li>
-    	                    <li>API Development</li>
-    	                    <li>System Architecture</li>
-    	                    <li>Performance Optimization</li>
-    	                </ul>
+						    <li>Python · Django · FastAPI</li>
+						    <li>REST APIs &amp; service design</li>
+						    <li>PostgreSQL &amp; data modeling</li>
+						    <li>ETL pipelines &amp; reporting automation</li>
+						    <li>Vue.js &amp; modern frontends</li>
+						    <li>Docker &amp; containerized workflows</li>
+						</ul>
     	            </div>
     	            <a href="images/fulls/BSwE.pdf" class="button resume-button" target="_blank">View Resume</a>
     	        </div>
@@ -77,11 +98,12 @@
 						</div>
 						<div class="project-content">
 							<h3>Keyword Video Search</h3>
-							<p>Video keyword search utilizing OpenAI's Whisper API to transcribe a video and allow users to search for keywords with timestamps.</p>
+							<p>Backend-driven keyword search over video using OpenAI Whisper for transcription, storing word-level timestamps so users can jump directly to the moments that matter.</p>
 							<div class="project-tech">
-								<span class="tech-tag">Python</span>
-								<span class="tech-tag">OpenAI</span>
-								<span class="tech-tag">API</span>
+							    <span class="tech-tag">Python</span>
+							    <span class="tech-tag">Flask/FastAPI</span>
+							    <span class="tech-tag">PostgreSQL</span>
+							    <span class="tech-tag">Whisper</span>
 							</div>
 							<button class="tech-details-btn" data-project="1">Technical Details</button>
 						</div>
@@ -93,11 +115,13 @@
 						</div>
 						<div class="project-content">
 							<h3>Media Co-Lab</h3>
-							<p>Social media platform for entities to share work, ideas, and collaborate. Find out how your organization can leverage a platform for brainstorming new creations.</p>
+							<p>Collaboration platform where teams upload media, label and prioritize work, and discuss content in context. Designed for internal campaigns, social content reviews, and creative brainstorming.</p>
 							<div class="project-tech">
-								<span class="tech-tag">React</span>
-								<span class="tech-tag">Node.js</span>
-								<span class="tech-tag">MongoDB</span>
+							    <span class="tech-tag">Python</span>
+							    <span class="tech-tag">Django &amp; DRF</span>
+							    <span class="tech-tag">Vue.js</span>
+							    <span class="tech-tag">PostgreSQL</span>
+							    <span class="tech-tag">Docker</span>
 							</div>
 							<button class="tech-details-btn" data-project="2">Technical Details</button>
 						</div>
@@ -109,7 +133,7 @@
 						</div>
 						<div class="project-content">
 							<h3>Cre8ion</h3>
-							<p>CAD model platform allowing users to upload/download and provide an introduction to the basics of 3D printing.</p>
+							<p>Web platform for sharing CAD models, managing file uploads/downloads, and introducing new users to 3D printing workflows and constraints.</p>
 							<div class="project-tech">
 								<span class="tech-tag">Python</span>
 								<span class="tech-tag">Django</span>
@@ -125,9 +149,9 @@
 						</div>
 						<div class="project-content">
 							<h3>Brainstorm</h3>
-							<p>Details coming soon.</p>
+							<p>In-progress concept focused on structured ideation sessions – capturing ideas, grouping themes, and turning unstructured notes into actionable next steps.</p>
 							<div class="project-tech">
-								<span class="tech-tag">Coming Soon</span>
+							    <span class="tech-tag">In Progress</span>
 							</div>
 							<button class="tech-details-btn" data-project="4">Technical Details</button>
 						</div>
@@ -183,10 +207,8 @@
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.poptrox.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>

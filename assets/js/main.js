@@ -107,25 +107,6 @@
 
 	// Main Sections: Two.
 
-		// Lightbox gallery.
-			$window.on('load', function() {
-
-				$('#two').poptrox({
-					caption: function($a) { return $a.next('h3').text(); },
-					overlayColor: '#2c2c2c',
-					overlayOpacity: 0.85,
-					popupCloserText: '',
-					popupLoaderText: '',
-					selector: '.work-item a.image',
-					usePopupCaption: true,
-					usePopupDefaultStyling: false,
-					usePopupEasyClose: false,
-					usePopupNav: true,
-					windowMargin: (breakpoints.active('<=small') ? 0 : 50)
-				});
-
-			})
-
 			const projectsData = {
 				1: [
 					{ src: "images/fulls/card1/01.gif", caption: " Creating a new record for keyword searches." },
@@ -208,6 +189,7 @@
 					e.preventDefault();
 					const projectItem = this.closest('.project-item');
 					const projectId = projectItem.getAttribute('data-project');
+					currentProjectId = projectId;
 					const swiperWrapper = projectModal.querySelector('.swiper-wrapper');
 					
 					// Get project position
