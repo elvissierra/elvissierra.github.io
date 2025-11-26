@@ -61,7 +61,7 @@ h1 {
     color: #ffffff;
     font-weight: 600;
     line-height: 1.1em;
-    margin: 0 0 1em 0;
+    margin: 0 0 0.75em 0;
     letter-spacing: 0.03em;
 }
 
@@ -139,12 +139,6 @@ code {
     margin: 0 auto;
 }
 
-.section-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 1.5em;
-    color: #333333;
-}
 
 /* Header */
 
@@ -161,7 +155,7 @@ code {
 	color: #fff;
 	height: 100vh;
 	left: 0;
-	padding: 2em;
+	padding: 1.5em;
 	position: fixed;
 	text-align: center;
 	top: 0;
@@ -169,7 +163,7 @@ code {
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
 	overflow: hidden;
-	font-size: 16pt;
+	font-size: 14pt;
 	will-change: transform;
 	transform: translateZ(0);
 	backface-visibility: hidden;
@@ -202,11 +196,11 @@ code {
 }
 
 #header .avatar {
-	width: 200px;
-	height: 200px;
+	width: 180px;
+	height: 180px;
 	border-radius: 20%;
 	object-fit: cover;
-	margin-bottom: 20px;
+	margin-bottom: 16px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -215,9 +209,9 @@ code {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
-    padding: 2em;
+    padding: 1.5em 1.25em;
 }
 
 #header .headline {
@@ -229,7 +223,7 @@ code {
 
 #header .subheadline {
     font-size: 1em;
-    margin: 0.5em 0 1.5em;
+    margin: 0.5em 0 0.75em;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 400;
 }
@@ -261,7 +255,7 @@ code {
 }
 
 #header .nav-links {
-    margin-top: 1.5em;
+    margin-top: 0.75em;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
@@ -323,34 +317,6 @@ code {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.button.resume-button {
-    margin-top: 1.5em;
-    padding: 0.75em 1.6em;
-    border-radius: 999px;
-    border: none;
-    background-color: #49bf9d;
-    color: #ffffff;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
-}
-
-.button.resume-button:hover {
-    background-color: #3aa986;
-    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.2);
-    transform: translateY(-1px);
-}
 
 /* Work Item */
 .work-item {
@@ -370,6 +336,65 @@ code {
 .work-item img:hover {
 	transform: scale(1.05);
 	transition: transform 0.3s ease-in-out;
+}
+
+/* Experience Section */
+.experience-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75em;
+}
+
+.experience-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5em 1.75em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.experience-role {
+    color: #e6a067;
+    font-size: 1.1rem;
+    margin-bottom: 0.25em;
+}
+
+.experience-meta {
+    font-size: 0.9rem;
+    color: #868585;
+    margin-bottom: 0.75em;
+}
+
+.experience-item ul {
+    margin: 0;
+    padding-left: 1.25em;
+}
+
+.experience-item li {
+    margin-bottom: 0.35em;
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 736px) {
+    .experience-item {
+        padding: 1.25em 1.25em;
+    }
+}
+
+/* Scroll reveal helper */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Projects Section */
@@ -874,26 +899,6 @@ code {
 	}
 }
 
-@media screen and (max-width: 980px) {
-	#header {
-		background-position: center;
-		background-size: cover;
-		padding: 6em 4em;
-		position: relative;
-		text-align: center;
-		top: 0;
-		width: 100%;
-		display: block;
-		height: auto;
-		min-height: 100vh;
-	}
-
-	#main {
-		margin: 0;
-		padding: 2em 1em;
-		width: 100%;
-	}
-}
 
 @media screen and (max-width: 736px) {
 	#header {

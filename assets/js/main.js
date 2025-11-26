@@ -1,413 +1,426 @@
 /*
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Main site script (vanilla JS)
+    Originally based on Strata by HTML5 UP, refactored to remove jQuery and legacy helpers.
 */
 
-(function($) {
+(function () {
+    'use strict';
 
-	var $window = $(window),
-		$body = $('body'),
-		$header = $('#header'),
-		$footer = $('#footer'),
-		$main = $('#main'),
-		settings = {
+    // ---------------------------------------------------------------------
+    // Core DOM references
+    // ---------------------------------------------------------------------
+    const body = document.body;
+    const header = document.getElementById('header');
+    const main = document.getElementById('main');
+    const footer = document.getElementById('footer');
 
-			// Parallax background effect?
-				parallax: true,
+    // ---------------------------------------------------------------------
+    // Preload / touch detection
+    // ---------------------------------------------------------------------
+    const settings = {
+        parallax: true,
+        parallaxFactor: 20
+    };
 
-			// Parallax factor (lower = more intense, higher = less intense).
-				parallaxFactor: 20
+    const isMobile =
+        'ontouchstart' in window ||
+        (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
 
-		};
+    // Remove preload class after initial load for smoother transitions
+    window.addEventListener('load', function () {
+        body.classList.remove('is-preload');
+    });
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:  [ '1281px',  '1800px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ '481px',   '736px'  ],
-			xsmall:  [ null,      '480px'  ],
-		});
+    // Touch mode hint (kept for any legacy CSS hooks)
+    if (isMobile) {
+        body.classList.add('is-touch');
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+        // iOS height fix
+        window.setTimeout(function () {
+            window.scrollTo(window.pageXOffset, window.pageYOffset + 1);
+        }, 0);
+    }
 
-	// Touch?
-		if (browser.mobile) {
+    // ---------------------------------------------------------------------
+    // Parallax header (vanilla, breakpoint-aware)
+    // ---------------------------------------------------------------------
+    if (header && settings.parallax) {
+        let parallaxEnabled = false;
+        let ticking = false;
 
-			// Turn on touch mode.
-				$body.addClass('is-touch');
+        function updateHeaderBackground(scrollY) {
+            header.style.backgroundPosition = 'center ' + (-1 * (scrollY / settings.parallaxFactor)) + 'px';
+        }
 
-			// Height fix (mostly for iOS).
-				window.setTimeout(function() {
-					$window.scrollTop($window.scrollTop() + 1);
-				}, 0);
+        function handleScroll() {
+            const scrollY =
+                window.pageYOffset ||
+                document.documentElement.scrollTop ||
+                0;
+            updateHeaderBackground(scrollY);
+            ticking = false;
+        }
 
-		}
+        function onScroll() {
+            if (!parallaxEnabled) return;
+            if (!ticking) {
+                window.requestAnimationFrame(handleScroll);
+                ticking = true;
+            }
+        }
 
-	// Footer.
-	//	breakpoints.on('<=medium', function() {
-	//		$footer.insertAfter($main);
-	//	});
+        function updateParallaxState() {
+            // Enable parallax only on non-mobile and wider than 980px
+            const shouldEnable = !isMobile && window.innerWidth > 980;
 
-	//	breakpoints.on('>medium', function() {
-	//		$footer.appendTo($header);
-	//	});
+            if (shouldEnable && !parallaxEnabled) {
+                parallaxEnabled = true;
+                header.style.backgroundPosition = 'center 0px';
+                window.addEventListener('scroll', onScroll);
+                handleScroll();
+            } else if (!shouldEnable && parallaxEnabled) {
+                parallaxEnabled = false;
+                window.removeEventListener('scroll', onScroll);
+                header.style.backgroundPosition = '';
+            }
+        }
 
-	// Header.
+        updateParallaxState();
+        window.addEventListener('resize', updateParallaxState);
+    }
 
-		// Parallax background.
+    // ---------------------------------------------------------------------
+    // Project gallery (Swiper) and modals
+    // ---------------------------------------------------------------------
 
-			// Disable parallax on IE (smooth scrolling is jerky), and on mobile platforms (= better performance).
-				if (browser.name == 'ie'
-				||	browser.mobile)
-					settings.parallax = false;
+    const projectsData = {
+        1: [
+            { src: 'images/fulls/card1/01.gif', caption: ' Creating a new record for keyword searches.' },
+            { src: 'images/fulls/card1/02.gif', caption: ' Using a previous record to search for keywords within the video.' }
+        ],
+        2: [
+            { src: 'images/fulls/card2/orgoverview.gif', caption: ' Organizational Layout ' },
+            { src: 'images/fulls/card2/labels.gif', caption: ' Labeling and tagging system ' },
+            { src: 'images/fulls/card2/media.gif', caption: ' Media discussions ' },
+            { src: 'images/fulls/card2/teams.gif', caption: ' Team based ' }
+        ],
+        3: [
+            { src: 'images/fulls/card3/cre8ion.gif', caption: ' Model Ranking ' },
+            { src: 'images/fulls/card3/02.gif', caption: ' Teaching AI ' },
+            { src: 'images/fulls/card3/03.gif', caption: ' Model upload and library ' }
+        ],
+        4: [
+            { src: 'images/fulls/card4/brainstorm.gif', caption: 'Brainstorm - Slide 1' },
+            { src: 'images/fulls/card4/02.gif', caption: 'Brainstorm - Slide 2' },
+            { src: 'images/fulls/card4/03.gif', caption: 'Brainstorm - Slide 3' }
+        ]
+    };
 
-			if (settings.parallax) {
-				let ticking = false;
-				let lastScrollY = 0;
-				const header = $header[0];
+    let projectSwiper = null;
 
-				breakpoints.on('<=medium', function() {
-					$window.off('scroll.strata_parallax');
-					$header.css('background-position', '');
-				});
+    function initializeSwiper() {
+        if (projectSwiper) {
+            projectSwiper.destroy(true, true);
+        }
 
-				breakpoints.on('>medium', function() {
-					$header.css('background-position', 'center 0px');
+        // Swiper is loaded globally via CDN script
+        projectSwiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: true
+            },
+            on: {
+                init: function () {
+                    const images = document.querySelectorAll('.swiper-slide img');
+                    images.forEach(function (img) {
+                        if (img.complete) {
+                            img.style.opacity = '1';
+                        } else {
+                            img.style.opacity = '0';
+                            img.onload = function () {
+                                img.style.opacity = '1';
+                            };
+                        }
+                    });
+                }
+            }
+        });
+    }
 
-					$window.on('scroll.strata_parallax', function() {
-						if (!ticking) {
-							window.requestAnimationFrame(function() {
-								const currentScrollY = $window.scrollTop();
-								const delta = currentScrollY - lastScrollY;
-								
-								// Only update if scroll amount is significant
-								if (Math.abs(delta) > 1) {
-									$header.css('background-position', 'center ' + (-1 * (currentScrollY / settings.parallaxFactor)) + 'px');
-									lastScrollY = currentScrollY;
-								}
-								
-								ticking = false;
-							});
-							ticking = true;
-						}
-					});
-				});
+    const projectModal = document.getElementById('projectModal');
+    const closeProjectModal = projectModal ? projectModal.querySelector('.close') : null;
+    let currentProjectId = null;
 
-				$window.on('load', function() {
-					$window.triggerHandler('scroll');
-				});
-			}
+    // Generic modal helpers
+    function showModal(modal) {
+        if (!modal) return;
 
-	// Main Sections: Two.
+        const scrollY = window.scrollY || window.pageYOffset || 0;
 
-			const projectsData = {
-				1: [
-					{ src: "images/fulls/card1/01.gif", caption: " Creating a new record for keyword searches." },
-					{ src: "images/fulls/card1/02.gif", caption: " Using a previous record to search for keywords within the video." },
-				],
-				2: [
-					{ src: "images/fulls/card2/orgoverview.gif", caption: " Organizational Layout " },
-					{ src: "images/fulls/card2/labels.gif", caption: " Labeling and tagging system " },
-					{ src: "images/fulls/card2/media.gif", caption: " Media discussions " },
-					{ src: "images/fulls/card2/teams.gif", caption: " Team based " },
-				],
-				3: [
-					{ src: "images/fulls/card3/cre8ion.gif", caption: " Model Ranking " },
-					{ src: "images/fulls/card3/02.gif", caption: " Teaching AI " },
-					{ src: "images/fulls/card3/03.gif", caption: " Model upload and library " },
-				],
-				4: [
-					{ src: "images/fulls/card4/brainstorm.gif", caption: "Brainstorm - Slide 1" },
-					{ src: "images/fulls/card4/02.gif", caption: "Brainstorm - Slide 2" },
-					{ src: "images/fulls/card4/03.gif", caption: "Brainstorm - Slide 3" },
-				]
-			};
-			
+        body.style.position = 'fixed';
+        body.style.top = '-' + scrollY + 'px';
+        body.style.width = '100%';
 
-			$(document).ready(function() {
-				initializeProjectModal();
-			});
-			
-			// Initialize Swiper
-			let projectSwiper = null;
+        modal.style.display = 'block';
+        void modal.offsetHeight;
+        modal.classList.add('show');
+    }
 
-			function initializeSwiper() {
-				if (projectSwiper) {
-					projectSwiper.destroy();
-				}
-				
-				projectSwiper = new Swiper('.swiper-container', {
-					navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev',
-					},
-					loop: true,
-					effect: 'fade',
-					fadeEffect: {
-						crossFade: true
-					},
-					keyboard: {
-						enabled: true,
-						onlyInViewport: true,
-					},
-					autoplay: {
-						delay: 5000,
-						disableOnInteraction: true,
-					},
-					on: {
-						init: function() {
-							// Ensure images are loaded
-							const images = document.querySelectorAll('.swiper-slide img');
-							images.forEach(img => {
-								if (img.complete) {
-									img.style.opacity = '1';
-								} else {
-									img.style.opacity = '0';
-									img.onload = function() {
-										this.style.opacity = '1';
-									};
-								}
-							});
-						}
-					}
-				});
-			}
+    function hideModal(modal) {
+        if (!modal) return;
 
-			// Project Gallery Modal
-			const projectModal = document.getElementById('projectModal');
-			const closeProjectModal = document.querySelector('#projectModal .close');
+        const scrollY = body.style.top;
 
-			document.querySelectorAll('.project-thumbnail img').forEach(img => {
-				img.addEventListener('click', function(e) {
-					e.preventDefault();
-					const projectItem = this.closest('.project-item');
-					const projectId = projectItem.getAttribute('data-project');
-					currentProjectId = projectId;
-					const swiperWrapper = projectModal.querySelector('.swiper-wrapper');
-					
-					// Get project position
-					const projectRect = projectItem.getBoundingClientRect();
-					const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-					
-					// Position modal relative to project
-					const modalContent = projectModal.querySelector('.modal-content');
-					modalContent.style.position = 'absolute';
-					modalContent.style.top = `${projectRect.top + scrollTop}px`;
-					modalContent.style.left = '50%';
-					modalContent.style.transform = 'translateX(-50%)';
-					
-					// Adjust modal size based on viewport
-					const viewportHeight = window.innerHeight;
-					const modalHeight = Math.min(viewportHeight * 0.8, 800);
-					modalContent.style.maxHeight = `${modalHeight}px`;
-					
-					swiperWrapper.innerHTML = '';
-					
-					if (projectsData[projectId]) {
-						projectsData[projectId].forEach(slide => {
-							const slideDiv = document.createElement('div');
-							slideDiv.className = 'swiper-slide';
-							
-							const imgElement = document.createElement('img');
-							imgElement.src = slide.src;
-							imgElement.alt = slide.caption;
-							imgElement.style.opacity = '0';
-							imgElement.style.transition = 'opacity 0.3s ease';
-							
-							const captionDiv = document.createElement('div');
-							captionDiv.className = 'slide-caption';
-							captionDiv.textContent = slide.caption;
-							
-							slideDiv.appendChild(imgElement);
-							slideDiv.appendChild(captionDiv);
-							swiperWrapper.appendChild(slideDiv);
-							
-							// Preload image
-							const tempImg = new Image();
-							tempImg.src = slide.src;
-							tempImg.onload = function() {
-								imgElement.style.opacity = '1';
-							};
-						});
-					}
-					
-					showModal(projectModal);
-					setTimeout(() => {
-						initializeSwiper();
-					}, 100);
-				});
-			});
+        modal.classList.remove('show');
+        setTimeout(function () {
+            modal.style.display = 'none';
 
-			// Update modal position on window resize
-			window.addEventListener('resize', () => {
-				if (projectModal.style.display === 'block') {
-					const activeProject = document.querySelector('.project-item[data-project="' + currentProjectId + '"]');
-					if (activeProject) {
-						const projectRect = activeProject.getBoundingClientRect();
-						const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-						const modalContent = projectModal.querySelector('.modal-content');
-						modalContent.style.top = `${projectRect.top + scrollTop}px`;
-					}
-				}
-			});
+            body.style.position = '';
+            body.style.top = '';
+            body.style.width = '';
 
-			// Store current project ID
-			let currentProjectId = null;
+            const y = parseInt(scrollY || '0', 10) * -1;
+            window.scrollTo(0, y);
+        }, 300);
+    }
 
-			// Update showModal function
-			function showModal(modal) {
-				// Store current scroll position
-				const scrollY = window.scrollY;
-				
-				// Prevent body scrolling
-				document.body.style.position = 'fixed';
-				document.body.style.top = `-${scrollY}px`;
-				document.body.style.width = '100%';
-				
-				modal.style.display = "block";
-				// Trigger reflow
-				modal.offsetHeight;
-				modal.classList.add('show');
-			}
+    if (projectModal) {
+        const swiperWrapper = projectModal.querySelector('.swiper-wrapper');
 
-			// Update hideModal function
-			function hideModal(modal) {
-				// Get the scroll position from body
-				const scrollY = document.body.style.top;
-				
-				modal.classList.remove('show');
-				setTimeout(() => {
-					modal.style.display = "none";
-					
-					// Restore body scrolling
-					document.body.style.position = '';
-					document.body.style.top = '';
-					document.body.style.width = '';
-					
-					// Restore scroll position
-					window.scrollTo(0, parseInt(scrollY || '0') * -1);
-				}, 300);
-			}
+        const thumbnails = document.querySelectorAll('.project-thumbnail img');
+        thumbnails.forEach(function (img) {
+            img.addEventListener('click', function (event) {
+                event.preventDefault();
 
-			closeProjectModal.addEventListener('click', () => {
-				hideModal(projectModal);
-			});
+                const projectItem = img.closest('.project-item');
+                if (!projectItem) return;
 
-			// Technical Details Modal
-			const techModal = document.getElementById('techModal');
-			const techDetails = document.querySelector('.tech-details');
-			const techButtons = document.querySelectorAll('.tech-details-btn');
-			const closeTechModal = document.querySelector('#techModal .close');
+                const projectId = projectItem.getAttribute('data-project');
+                currentProjectId = projectId;
 
-			const projectTechDetails = {
-				1: {
-					title: "Keyword Video Search",
-					details: `
-						<h4>Technical Implementation</h4>
-						<ul>
-							<li>Utilized OpenAI's Whisper API for accurate video transcription</li>
-							<li>Implemented efficient keyword search algorithm with timestamp tracking</li>
-							<li>Built with Python for optimal performance and easy integration</li>
-							<li>Features real-time search results and video preview</li>
-						</ul>
-						<h4>Key Technologies</h4>
-						<ul>
-							<li>Python</li>
-							<li>OpenAI Whisper API</li>
-							<li>FFmpeg for video processing</li>
-							<li>SQLite for data storage</li>
-						</ul>
-					`
-				},
-				2: {
-					title: "Media Co-Lab",
-					details: `
-						<h4>Technical Implementation</h4>
-						<ul>
-							<li>Full-stack social media platform with real-time collaboration features</li>
-							<li>Implemented secure user authentication and authorization</li>
-							<li>Built with React for frontend and Node.js for backend</li>
-							<li>Features real-time updates and team collaboration tools</li>
-						</ul>
-						<h4>Key Technologies</h4>
-						<ul>
-							<li>React.js</li>
-							<li>Node.js</li>
-							<li>MongoDB</li>
-							<li>Socket.io for real-time features</li>
-						</ul>
-					`
-				},
-				3: {
-					title: "Cre8ion",
-					details: `
-						<h4>Technical Implementation</h4>
-						<ul>
-							<li>CAD model platform with user-friendly interface</li>
-							<li>Implemented secure file upload and download system</li>
-							<li>Built with Django for robust backend functionality</li>
-							<li>Features 3D model preview and basic editing capabilities</li>
-						</ul>
-						<h4>Key Technologies</h4>
-						<ul>
-							<li>Python</li>
-							<li>Django</li>
-							<li>PostgreSQL</li>
-							<li>Three.js for 3D rendering</li>
-						</ul>
-					`
-				},
-				4: {
-					title: "Brainstorm",
-					details: `
-						<h4>Coming Soon</h4>
-						<p>Technical details will be available soon.</p>
-					`
-				}
-			};
+                const projectRect = projectItem.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+                const modalContent = projectModal.querySelector('.modal-content');
 
-			techButtons.forEach(button => {
-				button.addEventListener('click', () => {
-					const projectId = button.getAttribute('data-project');
-					const project = projectTechDetails[projectId];
-					
-					if (project) {
-						techDetails.innerHTML = project.details;
-						showModal(techModal);
-					}
-				});
-			});
+                modalContent.style.position = 'absolute';
+                modalContent.style.top = projectRect.top + scrollTop + 'px';
+                modalContent.style.left = '50%';
+                modalContent.style.transform = 'translateX(-50%)';
 
-			closeTechModal.addEventListener('click', () => {
-				hideModal(techModal);
-			});
+                const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                const modalHeight = Math.min(viewportHeight * 0.8, 800);
+                modalContent.style.maxHeight = modalHeight + 'px';
 
-			// Close modals when clicking outside
-			window.addEventListener('click', (event) => {
-				if (event.target === projectModal) {
-					hideModal(projectModal);
-				}
-				if (event.target === techModal) {
-					hideModal(techModal);
-				}
-			});
+                swiperWrapper.innerHTML = '';
 
-			// Close modals with Escape key
-			document.addEventListener('keydown', (event) => {
-				if (event.key === 'Escape') {
-					hideModal(projectModal);
-					hideModal(techModal);
-				}
-			});
-			
-			
-		
+                if (projectsData[projectId]) {
+                    projectsData[projectId].forEach(function (slide) {
+                        const slideDiv = document.createElement('div');
+                        slideDiv.className = 'swiper-slide';
 
-})(jQuery);
+                        const imgElement = document.createElement('img');
+                        imgElement.src = slide.src;
+                        imgElement.alt = slide.caption;
+                        imgElement.style.opacity = '0';
+                        imgElement.style.transition = 'opacity 0.3s ease';
+
+                        const captionDiv = document.createElement('div');
+                        captionDiv.className = 'slide-caption';
+                        captionDiv.textContent = slide.caption;
+
+                        slideDiv.appendChild(imgElement);
+                        slideDiv.appendChild(captionDiv);
+                        swiperWrapper.appendChild(slideDiv);
+
+                        const tempImg = new Image();
+                        tempImg.src = slide.src;
+                        tempImg.onload = function () {
+                            imgElement.style.opacity = '1';
+                        };
+                    });
+                }
+
+                showModal(projectModal);
+
+                setTimeout(function () {
+                    initializeSwiper();
+                }, 100);
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            if (projectModal.style.display === 'block' && currentProjectId) {
+                const activeProject = document.querySelector('.project-item[data-project="' + currentProjectId + '"]');
+                if (activeProject) {
+                    const rect = activeProject.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+                    const modalContent = projectModal.querySelector('.modal-content');
+                    modalContent.style.top = rect.top + scrollTop + 'px';
+                }
+            }
+        });
+
+        if (closeProjectModal) {
+            closeProjectModal.addEventListener('click', function () {
+                hideModal(projectModal);
+            });
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // Scroll reveal for experience and project cards
+    // ---------------------------------------------------------------------
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    if (revealElements.length) {
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(
+                function (entries, obs) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.15 }
+            );
+
+            revealElements.forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            // Fallback for older browsers: show everything immediately
+            revealElements.forEach(function (el) {
+                el.classList.add('is-visible');
+            });
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // Technical details modal
+    // ---------------------------------------------------------------------
+
+    const techModal = document.getElementById('techModal');
+    const techDetailsContainer = techModal ? techModal.querySelector('.tech-details') : null;
+    const closeTechModal = techModal ? techModal.querySelector('.close') : null;
+    const techButtons = document.querySelectorAll('.tech-details-btn');
+
+    const projectTechDetails = {
+        1: {
+            title: 'Keyword Video Search',
+            details: '\
+                <h4>Technical Implementation</h4>\
+                <ul>\
+                    <li>Utilizes OpenAI Whisper for accurate video transcription with word-level timestamps</li>\
+                    <li>Implements indexed keyword search mapped to exact time ranges in the video</li>\
+                    <li>Python-based backend API exposed via Flask/FastAPI</li>\
+                    <li>Stores transcripts and search metadata in PostgreSQL for reuse and analysis</li>\
+                </ul>\
+                <h4>Key Technologies</h4>\
+                <ul>\
+                    <li>Python</li>\
+                    <li>Flask / FastAPI</li>\
+                    <li>OpenAI Whisper</li>\
+                    <li>PostgreSQL</li>\
+                </ul>\
+            '
+        },
+        2: {
+            title: 'Media Co-Lab',
+            details: '\
+                <h4>Technical Implementation</h4>\
+                <ul>\
+                    <li>Full-stack collaboration platform for teams to upload and discuss media assets</li>\
+                    <li>Django + DRF backend exposing authenticated REST APIs</li>\
+                    <li>Vue.js SPA frontend for team views, media boards, and discussion threads</li>\
+                    <li>Supports label-based prioritization, tagging, and team-scoped permissions</li>\
+                </ul>\
+                <h4>Key Technologies</h4>\
+                <ul>\
+                    <li>Python</li>\
+                    <li>Django &amp; Django REST Framework</li>\
+                    <li>Vue.js</li>\
+                    <li>PostgreSQL</li>\
+                    <li>Docker</li>\
+                </ul>\
+            '
+        },
+        3: {
+            title: 'Cre8ion',
+            details: '\
+                <h4>Technical Implementation</h4>\
+                <ul>\
+                    <li>Web platform for sharing CAD models and managing uploads/downloads</li>\
+                    <li>Django backend for user authentication and file management</li>\
+                    <li>PostgreSQL database for storing model metadata and user info</li>\
+                    <li>3D preview using Three.js and custom STL parsing</li>\
+                </ul>\
+                <h4>Key Technologies</h4>\
+                <ul>\
+                    <li>Python</li>\
+                    <li>Django</li>\
+                    <li>PostgreSQL</li>\
+                    <li>Three.js</li>\
+                </ul>\
+            '
+        },
+        4: {
+            title: 'Brainstorm',
+            details: '\
+                <h4>Coming Soon</h4>\
+                <p>Technical details will be available soon.</p>\
+            '
+        }
+    };
+
+    if (techModal && techDetailsContainer) {
+        techButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                const projectId = button.getAttribute('data-project');
+                const project = projectTechDetails[projectId];
+                if (project) {
+                    techDetailsContainer.innerHTML = project.details;
+                    showModal(techModal);
+                }
+            });
+        });
+        if (closeTechModal) {
+            closeTechModal.addEventListener('click', function () {
+                hideModal(techModal);
+            });
+        }
+    }
+
+    // Close modals when clicking outside
+    window.addEventListener('click', function (event) {
+        if (projectModal && event.target === projectModal) {
+            hideModal(projectModal);
+        }
+        if (techModal && event.target === techModal) {
+            hideModal(techModal);
+        }
+    });
+
+    // Close modals with Escape key
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            hideModal(projectModal);
+            hideModal(techModal);
+        }
+    });
+
+})();

@@ -51,6 +51,7 @@
 			</div>
 			<nav class="nav-links">
 			    <a href="#about">About</a>
+			    <a href="#experience">Experience</a>
 			    <a href="#projects">Projects</a>
 			    <a href="#contact">Contact</a>
 			</nav>
@@ -62,29 +63,62 @@
     	    <!-- About Section -->
     	    <section id="about" class="section">
     	        <div class="content-container">
-    	            <h2>About Me</h2>
+    	            <h2 class="section-title">About Me</h2>
     	            <p>
-					    Hello, I'm Elvis – a backend and data engineer focused on building reliable systems that make complex data problems
-					    feel simple to work with. I enjoy taking loosely defined ideas, shaping them into clear architectures, and shipping
-					    code that people can depend on.
+					    I’m a backend and data engineer who enjoys turning ambiguous ideas into reliable systems. My work centers around
+					    designing APIs, ETL pipelines, and data models that give teams trustworthy information and clear paths to ship.
 					</p>
 					<p>
-					    My experience spans ETL pipelines, API and service design, and database-backed applications. I care about clean,
-					    maintainable implementations, observability, and using data to drive decisions – whether that’s powering internal
-					    reporting tools or architecting collaborative platforms.
+					    Recent projects include internal reporting tooling, media collaboration platforms, and search experiences built
+					    on top of structured data. Across all of them, my focus is the same: clean architecture, observability,
+					    and code that is easy for the next engineer to reason about.
 					</p>
     	            <div class="skills-container">
     	                <h3>Technical Skills</h3>
     	                <ul class="skills-list">
-						    <li>Python · Django · FastAPI</li>
-						    <li>REST APIs &amp; service design</li>
-						    <li>PostgreSQL &amp; data modeling</li>
+						    <li>Python · Django · FastAPI · Flask</li>
+						    <li>REST APIs &amp; service architecture</li>
+						    <li>PostgreSQL · SQL · data modeling</li>
 						    <li>ETL pipelines &amp; reporting automation</li>
 						    <li>Vue.js &amp; modern frontends</li>
-						    <li>Docker &amp; containerized workflows</li>
+						    <li>Docker · CI/CD &amp; containerized workflows</li>
 						</ul>
     	            </div>
     	            <a href="images/fulls/BSwE.pdf" class="button resume-button" target="_blank">View Resume</a>
+    	        </div>
+    	    </section>
+
+    	    <!-- Experience Section -->
+    	    <section id="experience" class="section">
+    	        <h2 class="section-title">Experience</h2>
+    	        <div class="content-container experience-list">
+    	            <article class="experience-item reveal-on-scroll">
+    	                <h3 class="experience-role">Data Engineer – Apple Maps</h3>
+    	                <p class="experience-meta">April 2025 – Present · ETL &amp; internal reporting</p>
+    	                <ul>
+    	                    <li>Develop and maintain ETL pipelines and automation that improve how internal teams ingest, validate, and work with map data.</li>
+    	                    <li>Build internal reporting and analytics views that surface trends and outliers for time-sensitive decision making.</li>
+    	                    <li>Design small internal tools and scripts that reduce manual investigation effort and make operational data easier to explore.</li>
+    	                </ul>
+    	            </article>
+    	            <article class="experience-item reveal-on-scroll">
+    	                <h3 class="experience-role">Software Engineer – Media Co-Lab</h3>
+    	                <p class="experience-meta">March 2024 – January 2025 · Collaboration platform</p>
+    	                <ul>
+    	                    <li>Designed and implemented a Django + DRF backend for team-based media collaboration, labeling, and discussion.</li>
+    	                    <li>Integrated a Vue.js SPA frontend with authenticated REST APIs, focusing on clear user flows and responsive layouts.</li>
+    	                    <li>Optimized relational schema and queries to keep team and media views fast under growing datasets.</li>
+    	                </ul>
+    	            </article>
+    	            <article class="experience-item reveal-on-scroll">
+    	                <h3 class="experience-role">Senior Backend Engineer – Onward</h3>
+    	                <p class="experience-meta">September 2022 – February 2024 · Backend systems &amp; data flows</p>
+    	                <ul>
+    	                    <li>Architected and maintained backend services powering data-driven features and internal tools.</li>
+    	                    <li>Improved service reliability through cleaner interfaces, better database access patterns, and monitoring.</li>
+    	                    <li>Collaborated closely with product and frontend to translate requirements into APIs that were easy to use and extend.</li>
+    	                </ul>
+    	            </article>
     	        </div>
     	    </section>
 
@@ -92,7 +126,7 @@
     	    <section id="projects" class="section">
     	        <h2 class="section-title">Recent Projects</h2>
     	        <div class="projects-grid">
-					<div class="project-item" data-project="1">
+					<div class="project-item reveal-on-scroll" data-project="1">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card1/vid_search.gif" alt="Keyword Video Search Screenshot">
 						</div>
@@ -109,7 +143,7 @@
 						</div>
 					</div>
 
-					<div class="project-item" data-project="2">
+					<div class="project-item reveal-on-scroll" data-project="2">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card2/mediacolab.gif" alt="Media Co-Lab Screenshot">
 						</div>
@@ -127,7 +161,7 @@
 						</div>
 					</div>
 
-					<div class="project-item" data-project="3">
+					<div class="project-item reveal-on-scroll" data-project="3">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card3/cre8ion.gif" alt="Cre8ion Screenshot">
 						</div>
@@ -143,7 +177,7 @@
 						</div>
 					</div>
 					
-					<div class="project-item" data-project="4">
+					<div class="project-item reveal-on-scroll" data-project="4">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card4/brainstorm.gif" alt="Brainstorm">
 						</div>
@@ -188,7 +222,7 @@
 
     	    <!-- Contact Section -->
     	    <section id="contact" class="section">
-    	        <h2>Contact Me</h2>
+    	        <h2 class="section-title">Contact</h2>
     	        <div class="contact-container">
     	            <ul class="contact-info">
     	                <li><i class="icon fas fa-home"></i> Austin, TX</li>
@@ -202,13 +236,10 @@
 
     	<!-- Footer -->
     	<footer id="footer">
-    	    <p>&copy; 2024 Elvis Sierra. All Rights Reserved.</p>
+    	    <p>&copy; 2025 Elvis Sierra. All Rights Reserved.</p>
     	</footer>
 
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
