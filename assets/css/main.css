@@ -30,7 +30,7 @@ body {
     font-weight: 400;
     line-height: 1.7;
     color: #555555;
-    background-color: #f4f4f4;
+    background-color: #e4f1ea;
     scroll-behavior: smooth;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -113,7 +113,7 @@ code {
 #main {
     margin-left: 20%;
     width: 80%;
-    background-color: #f4f4f4;
+    background-color: #e4f1ea;
     box-sizing: border-box;
     overflow: hidden;
     padding: 2.5em 3em;
@@ -123,6 +123,17 @@ code {
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: #e6a067;
+    z-index: 999;
+    transform-origin: left center;
 }
 
 .section {
@@ -278,6 +289,12 @@ code {
     border-bottom-color: #49bf9d;
 }
 
+#header .nav-links a.active {
+    color: #49bf9d;
+    border-bottom-color: #49bf9d;
+    font-weight: 600;
+}
+
 /* Skills Section */
 .skills-container {
     margin: 2em 0;
@@ -371,6 +388,14 @@ code {
     border: 1px solid rgba(0, 0, 0, 0.05);
     height: 100%;
     width: 85%;
+    border-left: 3px solid transparent;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.experience-item:hover {
+    border-left-color: #e6a067;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .experience-role {
@@ -440,15 +465,17 @@ code {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
     width: 85%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     height: 100%;
+    border-top: 3px solid transparent;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .project-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-top-color: #e6a067;
 }
 
 .project-thumbnail {
@@ -458,6 +485,37 @@ code {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-thumbnail-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0.75em 1em;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.project-thumbnail-label {
+    color: #ffffff;
+    font-size: 0.85em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.35em 0.9em;
+    border-radius: 999px;
+}
+
+.project-thumbnail-label i {
+    font-size: 0.9em;
 }
 
 .project-thumbnail::before {
@@ -479,6 +537,10 @@ code {
 
 .project-thumbnail:hover img {
     transform: scale(1.05);
+}
+
+.project-thumbnail:hover .project-thumbnail-overlay {
+    opacity: 1;
 }
 
 .project-content {
@@ -547,6 +609,8 @@ code {
 /* Modal Styles */
 .modal {
     display: none;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -566,11 +630,11 @@ code {
 }
 
 .modal-content {
-    margin: 0;
+    margin: 0 auto;
     display: block;
     width: 100%;
     max-width: 1000px;
-    position: absolute;
+    position: relative;
     background: transparent;
     transition: transform 0.3s ease;
 }
@@ -634,10 +698,10 @@ code {
 }
 
 .swiper-slide img {
-    max-width: 90%;
-    max-height: 90%;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -1031,7 +1095,7 @@ code {
     padding: 1em;
     width: 100%;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #e4f1ea;
 }
 
 /* Loading State */

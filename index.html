@@ -50,18 +50,19 @@
 			    </ul>
 			</div>
 			<nav class="nav-links">
-			    <a href="#about">About</a>
-			    <a href="#experience">Experience</a>
-			    <a href="#projects">Projects</a>
-			    <a href="#contact">Contact</a>
+			    <a href="#about" class="nav-link">About</a>
+			    <a href="#experience" class="nav-link">Experience</a>
+			    <a href="#projects" class="nav-link">Projects</a>
+			    <a href="#contact" class="nav-link">Contact</a>
 			</nav>
     	    </div>
     	</header>
 
     	<!-- Main Content -->
-    	<main id="main">
-    	    <!-- About Section -->
-    	    <section id="about" class="section">
+		<main id="main">
+		    <div id="scroll-progress"></div>
+		    <!-- About Section -->
+		    <section id="about" class="section">
     	        <div class="content-container">
     	            <h2 class="section-title">About Me</h2>
     	            <p>
@@ -104,7 +105,7 @@
     	        <div class="content-container experience-list">
     	            <article class="experience-item reveal-on-scroll">
     	                <h3 class="experience-role">Data Engineer – Apple Maps</h3>
-    	                <p class="experience-meta">April 2025 – Present · ETL &amp; internal reporting</p>
+    	                <p class="experience-meta">2025 – Present · ETL &amp; internal reporting</p>
     	                <ul>
     <li>Owned ETL-style pipelines in Python and Pandas to ingest data from CSVs/JSON and Postgres, normalize it, and write cleaned outputs back to databases and CSV artifacts for reporting.</li>
     <li>Standardized pipelines into single orchestrated scripts (local and containerized) with reusable extract/transform/validate modules, built-in assertions, and checks to catch data issues early.</li>
@@ -113,7 +114,7 @@
     	            </article>
     	            <article class="experience-item reveal-on-scroll">
     	                <h3 class="experience-role">Software Engineer – Media Co-Lab</h3>
-    	                <p class="experience-meta">March 2024 – January 2025 · Collaboration platform</p>
+    	                <p class="experience-meta">2024 – 2025 · Collaboration platform</p>
     	                <ul>
     <li>Designed and implemented Postgres schemas for core entities (users, organizations, teams, media, labels, and comments) and exposed them via GraphQL and REST APIs.</li>
     <li>Integrated a Vue.js SPA with authenticated backend services, focusing on clear collaboration flows, filtering, sorting, and rich media detail views.</li>
@@ -122,7 +123,7 @@
     	            </article>
     	            <article class="experience-item reveal-on-scroll">
     	                <h3 class="experience-role">Senior Backend Engineer – Onward</h3>
-    	                <p class="experience-meta">September 2022 – February 2024 · Backend systems &amp; data flows</p>
+    	                <p class="experience-meta"> 2022 – 2024 · Backend systems &amp; data flows</p>
     	                <ul>
     <li>Led backend and search development for a content and analytics platform supporting online learning content, experiments, and field studies.</li>
     <li>Improved search relevance and coverage by redesigning Elasticsearch/OpenSearch indexing strategies and normalizing source data, reducing time-to-result and increasing result quality.</li>
@@ -139,6 +140,11 @@
 					<div class="project-item reveal-on-scroll" data-project="1">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card1/vid_search.gif" alt="Keyword Video Search Screenshot">
+							<div class="project-thumbnail-overlay">
+								<span class="project-thumbnail-label">
+									<i class="fas fa-search-plus"></i> View gallery
+								</span>
+							</div>
 						</div>
 						<div class="project-content">
 							<h3>Keyword Video Search</h3>
@@ -156,6 +162,11 @@
 					<div class="project-item reveal-on-scroll" data-project="2">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card2/mediacolab.gif" alt="Media Co-Lab Screenshot">
+							<div class="project-thumbnail-overlay">
+								<span class="project-thumbnail-label">
+									<i class="fas fa-search-plus"></i> View gallery
+								</span>
+							</div>
 						</div>
 						<div class="project-content">
 							<h3>Media Co-Lab</h3>
@@ -174,6 +185,11 @@
 					<div class="project-item reveal-on-scroll" data-project="3">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card3/cre8ion.gif" alt="Cre8ion Screenshot">
+							<div class="project-thumbnail-overlay">
+								<span class="project-thumbnail-label">
+									<i class="fas fa-search-plus"></i> View gallery
+								</span>
+							</div>
 						</div>
 						<div class="project-content">
 							<h3>Cre8ion</h3>
@@ -190,6 +206,11 @@
 					<div class="project-item reveal-on-scroll" data-project="4">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card4/brainstorm.gif" alt="Brainstorm">
+							<div class="project-thumbnail-overlay">
+								<span class="project-thumbnail-label">
+									<i class="fas fa-search-plus"></i> View gallery
+								</span>
+							</div>
 						</div>
 						<div class="project-content">
 							<h3>Brainstorm</h3>

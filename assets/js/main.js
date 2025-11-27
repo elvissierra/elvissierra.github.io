@@ -175,7 +175,7 @@
         body.style.top = '-' + scrollY + 'px';
         body.style.width = '100%';
 
-        modal.style.display = 'block';
+        modal.style.display = 'flex';
         void modal.offsetHeight;
         modal.classList.add('show');
     }
@@ -201,29 +201,17 @@
     if (projectModal) {
         const swiperWrapper = projectModal.querySelector('.swiper-wrapper');
 
-        const thumbnails = document.querySelectorAll('.project-thumbnail img');
-        thumbnails.forEach(function (img) {
-            img.addEventListener('click', function (event) {
+        const thumbnails = document.querySelectorAll('.project-thumbnail');
+        thumbnails.forEach(function (thumb) {
+            thumb.style.cursor = 'pointer';
+            thumb.addEventListener('click', function (event) {
                 event.preventDefault();
 
-                const projectItem = img.closest('.project-item');
+                const projectItem = thumb.closest('.project-item');
                 if (!projectItem) return;
 
                 const projectId = projectItem.getAttribute('data-project');
                 currentProjectId = projectId;
-
-                const projectRect = projectItem.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-                const modalContent = projectModal.querySelector('.modal-content');
-
-                modalContent.style.position = 'absolute';
-                modalContent.style.top = projectRect.top + scrollTop + 'px';
-                modalContent.style.left = '50%';
-                modalContent.style.transform = 'translateX(-50%)';
-
-                const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-                const modalHeight = Math.min(viewportHeight * 0.8, 800);
-                modalContent.style.maxHeight = modalHeight + 'px';
 
                 swiperWrapper.innerHTML = '';
 
@@ -260,18 +248,6 @@
                     initializeSwiper();
                 }, 100);
             });
-        });
-
-        window.addEventListener('resize', function () {
-            if (projectModal.style.display === 'block' && currentProjectId) {
-                const activeProject = document.querySelector('.project-item[data-project="' + currentProjectId + '"]');
-                if (activeProject) {
-                    const rect = activeProject.getBoundingClientRect();
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-                    const modalContent = projectModal.querySelector('.modal-content');
-                    modalContent.style.top = rect.top + scrollTop + 'px';
-                }
-            }
         });
 
         if (closeProjectModal) {
@@ -422,5 +398,67 @@
             hideModal(techModal);
         }
     });
+    // Active section highlight in side nav
+(function () {
+  const sections = document.querySelectorAll('main section.section');
+  const navLinks = document.querySelectorAll('#header .nav-links .nav-link');
+  if (!sections.length || !navLinks.length) return;
 
+  const navBySectionId = {};
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href') || '';
+    if (href.startsWith('#')) {
+      const id = href.slice(1);
+      navBySectionId[id] = link;
+    }
+  });
+
+  const clearActive = () => {
+    navLinks.forEach(link => link.classList.remove('active'));
+  };
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const activeLink = navBySectionId[id];
+          if (activeLink) {
+            clearActive();
+            activeLink.classList.add('active');
+          }
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.5
+    }
+  );
+
+  sections.forEach(section => observer.observe(section));
+})();
+
+(function () {
+  const progressBar = document.getElementById('scroll-progress');
+  if (!progressBar) return;
+
+  const updateProgress = () => {
+    const scrollTop =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  };
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+})();
 })();
