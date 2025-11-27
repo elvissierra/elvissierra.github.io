@@ -112,7 +112,7 @@ code {
 
 #main {
     margin-left: 20%;
-    width: 72%;
+    width: 80%;
     background-color: #f4f4f4;
     box-sizing: border-box;
     overflow: hidden;
@@ -147,6 +147,7 @@ code {
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
+	background-color: #050809;
 	background-attachment: fixed;
 	background-image: url("../../images/bg3.jpg");
 	background-position: center;
@@ -340,11 +341,11 @@ code {
 
 /* Experience Section */
 .experience-list {
-    max-width: 720px;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1.75em;
+    gap: 2em;
 }
 
 .experience-item {
@@ -353,6 +354,8 @@ code {
     padding: 1.5em 1.75em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
+    width: 85%;
 }
 
 .experience-role {
@@ -379,6 +382,14 @@ code {
     line-height: 1.5;
 }
 
+.experience-item:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.experience-item:nth-child(even) {
+    align-self: flex-end;
+}
+
 @media screen and (max-width: 736px) {
     .experience-item {
         padding: 1.25em 1.25em;
@@ -403,7 +414,7 @@ code {
     flex-direction: column;
     gap: 2em;
     padding: 10px;
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -415,8 +426,9 @@ code {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    max-width: 100%;
+    width: 85%;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 100%;
 }
 
 .project-item:hover {
@@ -472,6 +484,14 @@ code {
     color: #868585;
     line-height: 1.6em;
     margin-bottom: 1em;
+}
+
+.project-item:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.project-item:nth-child(even) {
+    align-self: flex-end;
 }
 
 .project-tech {
@@ -738,8 +758,19 @@ code {
         margin-bottom: 1em;
     }
 
+    .experience-list,
     .projects-grid {
+        display: flex;
+        flex-direction: column;
         gap: 1.75em;
+        max-width: 100%;
+    }
+
+    .experience-item,
+    .project-item {
+        width: 100%;
+        max-width: 100%;
+        align-self: stretch;
     }
 
     .project-item {

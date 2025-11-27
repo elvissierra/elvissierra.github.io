@@ -18,7 +18,7 @@
     // Preload / touch detection
     // ---------------------------------------------------------------------
     const settings = {
-        parallax: true,
+        parallax: false,
         parallaxFactor: 20
     };
 
