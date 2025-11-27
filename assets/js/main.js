@@ -169,32 +169,18 @@
     function showModal(modal) {
         if (!modal) return;
 
-        const scrollY = window.scrollY || window.pageYOffset || 0;
-
-        body.style.position = 'fixed';
-        body.style.top = '-' + scrollY + 'px';
-        body.style.width = '100%';
-
+        // Just show the modal; let the page keep its current scroll position
         modal.style.display = 'flex';
-        void modal.offsetHeight;
+        void modal.offsetHeight; // force reflow so the CSS transition applies
         modal.classList.add('show');
     }
 
     function hideModal(modal) {
         if (!modal) return;
-
-        const scrollY = body.style.top;
-
+        
         modal.classList.remove('show');
         setTimeout(function () {
             modal.style.display = 'none';
-
-            body.style.position = '';
-            body.style.top = '';
-            body.style.width = '';
-
-            const y = parseInt(scrollY || '0', 10) * -1;
-            window.scrollTo(0, y);
         }, 300);
     }
 
