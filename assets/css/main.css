@@ -310,6 +310,11 @@ code {
     border-radius: 20px;
     font-size: 0.9em;
     transition: all 0.3s ease;
+    flex: 0 0 auto;
+    max-width: 20rem;
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: center;
 }
 
 
@@ -318,6 +323,16 @@ code {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.skills-row .skills-container {
+    flex: 1 1 260px;
+}
 
 /* Work Item */
 .work-item {
