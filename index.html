@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
     <link rel="icon" href="images/bg3.jpg" type="image/jpeg">
@@ -27,8 +27,8 @@
 				alt="Elvis Sierra - Backend &amp; Data Engineer" 
 				class="avatar">
     	        <h1>Elvis Sierra</h1>
-				<p class="headline">Backend &amp; Data Engineer</p>
-				<p class="subheadline">Designing reliable APIs, ETL pipelines, and data-driven systems</p>
+				<p class="headline">Data &amp; Analytics Engineer</p>
+				<p class="subheadline">Turning raw data into reliable products — ETL pipelines, search services, and analytics tools</p>
     	        <div class="icon-container">
 			    <ul class="icons">
 			        <li>
@@ -50,11 +50,15 @@
 			        </li>
 			    </ul>
 			</div>
+			<div class="header-status">
+			    <span class="status-dot"></span>
+			    <span class="status-text">available for new roles</span>
+			</div>
 			<nav class="nav-links">
-			    <a href="#about" class="nav-link">About</a>
-			    <a href="#experience" class="nav-link">Experience</a>
-			    <a href="#projects" class="nav-link">Projects</a>
-			    <a href="#contact" class="nav-link">Contact</a>
+			    <a href="#about" class="nav-link" data-index="01">About</a>
+			    <a href="#experience" class="nav-link" data-index="02">Experience</a>
+			    <a href="#projects" class="nav-link" data-index="03">Projects</a>
+			    <a href="#contact" class="nav-link" data-index="04">Contact</a>
 			</nav>
     	    </div>
     	</header>
@@ -65,79 +69,133 @@
 		    <!-- About Section -->
 		    <section id="about" class="section">
     	        <div class="content-container">
-    	            <h2 class="section-title">About Me</h2>
+    	            <h2 class="section-title" data-label="// 01">About Me</h2>
     	            <p>
-    I’m a senior backend and data engineer with over six years of experience turning messy, real‑world data into reliable products — ETL pipelines, search services, and internal analytics tools. I like working close to both the data and the problem, designing APIs, data models, and automation that give teams trustworthy information and clear levers to act on.
-</p>
-<p>
-    Recently that has meant owning ETL and reporting flows for Apple Maps, building a media collaboration platform on Django, GraphQL, and Vue.js, and leading backend work for search and analytics experiences. Across roles, the common thread is the same: clean, observable systems, documentation that other engineers can actually use, and close collaboration with product and stakeholders.
+    Software and data engineer with 6+ years of experience turning raw data into reliable products — ETL pipelines, search services, and analytics tools — that support business decisions and operational performance. Comfortable working from vague questions to concrete metrics, partnering cross-functionally to define what to measure, how to measure it, and how to use it. Bias toward action and experimentation, focused on shipping solutions that provide real-world impact.
 </p>
     	            <div class="skills-row">
                         <div class="skills-container">
                             <h3>Technical Skills</h3>
                             <ul class="skills-list">
                                 <li>Python · SQL · JavaScript</li>
+                                <li>Pandas · ETL · data validation · reporting automation</li>
+                                <li>Selenium · Keynote automation · Excel</li>
                                 <li>Django · FastAPI · Flask · Vue.js · GraphQL</li>
-                                <li>Pandas · ETL pipelines · data validation</li>
-                                <li>AWS (ECS, EC2, S3, RDS, Lambda, API Gateway) · Docker · CI/CD</li>
-                                <li>Reporting automation &amp; internal analytics tools</li>
-                                <li>PostgreSQL · MySQL · ElasticSearch/OpenSearch</li>
+                                <li>PostgreSQL · MySQL · OpenSearch · AWS RDS · S3</li>
+                                <li>AWS (ECS, EC2, Lambda, API Gateway, CloudWatch) · Docker · Git · Postman</li>
                             </ul>
                         </div>
                         <div class="skills-container">
                             <h3>Interpersonal Skills</h3>
                             <ul class="skills-list">
                                 <li>Cross-functional collaboration</li>
-                                <li>Comfortable driving experiments and iteration with stakeholders</li>
-                                <li>Accountable &amp; dependable</li>
+                                <li>Proactive &amp; accountable</li>
                                 <li>Adaptable &amp; growth-minded</li>
-                                <li>Clear written documentation &amp; communication</li>
-                                <li>Earnest, direct communication style</li>
+                                <li>Clear structured documentation</li>
+                                <li>Earnest, direct communication</li>
                             </ul>
                         </div>
                     </div>
+    	            <div class="stats-bar">
+    	                <div class="stat-item">
+    	                    <span class="stat-number" data-target="6">0</span><span class="stat-suffix">+</span>
+    	                    <span class="stat-label">years experience</span>
+    	                </div>
+    	                <div class="stat-item">
+    	                    <span class="stat-number" data-target="4">0</span><span class="stat-suffix"></span>
+    	                    <span class="stat-label">production projects</span>
+    	                </div>
+    	                <div class="stat-item">
+    	                    <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+    	                    <span class="stat-label">companies shipped at</span>
+    	                </div>
+    	                <div class="stat-item">
+    	                    <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
+    	                    <span class="stat-label">ETL pipelines owned</span>
+    	                </div>
+    	            </div>
     	            <a href="images/fulls/BSwE.pdf" class="button resume-button" target="_blank">View Resume</a>
     	        </div>
     	    </section>
 
     	    <!-- Experience Section -->
     	    <section id="experience" class="section">
-    	        <h2 class="section-title">Experience</h2>
-    	        <div class="content-container experience-list">
-    	            <article class="experience-item reveal-on-scroll">
-    	                <h3 class="experience-role">Data Engineer – Apple Maps</h3>
-    	                <p class="experience-meta">2025 – Present · ETL &amp; internal reporting</p>
-    	                <ul>
-    <li>Owned ETL-style pipelines in Python and Pandas to ingest data from CSVs/JSON and Postgres, normalize it, and write cleaned outputs back to databases and CSV artifacts for reporting.</li>
-    <li>Standardized pipelines into single orchestrated scripts (local and containerized) with reusable extract/transform/validate modules, built-in assertions, and checks to catch data issues early.</li>
-    <li>Developed recurring analytical reports and Keynote decks that surface trends, outliers, and data quality signals for time-sensitive internal decision making.</li>
-</ul>
-    	            </article>
-    	            <article class="experience-item reveal-on-scroll">
-    	                <h3 class="experience-role">Software Engineer – Media Co-Lab</h3>
-    	                <p class="experience-meta">2024 – 2025 · Collaboration platform</p>
-    	                <ul>
-    <li>Designed and implemented Postgres schemas for core entities (users, organizations, teams, media, labels, and comments) and exposed them via GraphQL and REST APIs.</li>
-    <li>Integrated a Vue.js SPA with authenticated backend services, focusing on clear collaboration flows, filtering, sorting, and rich media detail views.</li>
-    <li>Deployed the application as Dockerized services on AWS environments and tuned queries and indexes to keep team and media views fast as datasets grew.</li>
-</ul>
-    	            </article>
-    	            <article class="experience-item reveal-on-scroll">
-    	                <h3 class="experience-role">Senior Backend Engineer – Onward</h3>
-    	                <p class="experience-meta"> 2022 – 2024 · Backend systems &amp; data flows</p>
-    	                <ul>
-    <li>Led backend and search development for a content and analytics platform supporting online learning content, experiments, and field studies.</li>
-    <li>Improved search relevance and coverage by redesigning Elasticsearch/OpenSearch indexing strategies and normalizing source data, reducing time-to-result and increasing result quality.</li>
-    <li>Built and operated containerized services on AWS with CI/CD pipelines, and provided hands-on technical leadership through API design, code reviews, and onboarding guides for distributed teams.</li>
-</ul>
-    	            </article>
+    	        <h2 class="section-title" data-label="// 02">Experience</h2>
+    	        <div class="content-container">
+    	            <div class="pipeline-track">
+    	                <span class="pipeline-cap pipeline-cap--top">INGEST</span>
+
+    	                <div class="pipeline-node">
+    	                    <div class="node-dot"></div>
+    	                    <article class="experience-item reveal-on-scroll">
+    	                        <span class="domain-badge">Data Engineering</span>
+    	                        <h3 class="experience-role">Data Engineer – Apple Maps</h3>
+    	                        <p class="experience-meta">April 2025 – Present · ETL &amp; internal reporting</p>
+    	                        <ul>
+    	                            <li>Own ETL pipelines that ingest file inputs and relational tables, apply transformations with Python/Pandas, and write into cleaned containers used by recurring reports and ad hoc analyses.</li>
+    	                            <li>Consolidated Python scripts into a shareable package with separate ETL modules; each pipeline provides an entrypoint, runs schema validation, and logs metrics at each stage for traceability.</li>
+    	                            <li>Designed and calibrated LLM-assisted workflows to interpret semi-structured reporting inputs, normalizing outputs against structured relational data and applying post-processing rules to ensure consistency and metric alignment.</li>
+    	                            <li>Partnered with reporting and operations stakeholders to define KPIs, calculation logic, and refresh cadence, aligning pipeline outputs with decision-making drivers.</li>
+    	                            <li>Automated recurring presentation decks by scheduling Python jobs that query analytical tables, compute aggregates, and populate Keynote templates — removing manual spreadsheet manipulation from stakeholder updates.</li>
+    	                        </ul>
+    	                    </article>
+    	                </div>
+
+    	                <div class="pipeline-node">
+    	                    <div class="node-dot"></div>
+    	                    <article class="experience-item reveal-on-scroll">
+    	                        <span class="domain-badge">Full-Stack &amp; Backend</span>
+    	                        <h3 class="experience-role">Software Engineer – Media Co-Lab</h3>
+    	                        <p class="experience-meta">March 2024 – January 2025 · Collaboration platform</p>
+    	                        <ul>
+    	                            <li>Designed normalized relational schemas with appropriate keys, indexes, and constraints, maintained via migrations, aligning application and report queries as the model evolved.</li>
+    	                            <li>Improved performance of heavy read paths by profiling queries (logs, explain/analyze), adding targeted single and composite indexes, and simplifying query shapes — reducing response times and database load.</li>
+    	                            <li>Integrated an LLM-backed assistant by wiring API calls into existing services, storing prompts/responses with metadata in relational tables, and using that store to drive onboarding flows and in-app guidance.</li>
+    	                        </ul>
+    	                    </article>
+    	                </div>
+
+    	                <div class="pipeline-node">
+    	                    <div class="node-dot"></div>
+    	                    <article class="experience-item reveal-on-scroll">
+    	                        <span class="domain-badge">Search &amp; Backend Systems</span>
+    	                        <h3 class="experience-role">Senior Backend Engineer – Onward</h3>
+    	                        <p class="experience-meta">September 2022 – February 2024 · Backend systems &amp; data flows</p>
+    	                        <ul>
+    	                            <li>Increased search relevance and coverage by redesigning search indexing pipelines and mappings, normalizing and preprocessing source data to avoid data drift and loss, improving time-to-answer and the quality of surfaced content.</li>
+    	                            <li>Integrated LLM-based features on top of search and relational data, storing interactions, feedback signals, and outputs for later analysis and tuning to better match user intent.</li>
+    	                            <li>Produced backend-focused documentation and API design specs that spelled out data flows, contracts, and failure modes — helping distributed teams maintain and integrate cleanly.</li>
+    	                            <li>Ran containerized services behind AWS infrastructure with Git-based CI/CD pipelines, including automated builds, migrations, and tests, keeping deployments controlled.</li>
+    	                        </ul>
+    	                    </article>
+    	                </div>
+
+    	                <div class="pipeline-node">
+    	                    <div class="node-dot"></div>
+    	                    <article class="experience-item reveal-on-scroll">
+    	                        <span class="domain-badge">Performance &amp; Analytics</span>
+    	                        <h3 class="experience-role">Software Engineer / Team Lead – Caterpillar Inc.</h3>
+    	                        <p class="experience-meta">March 2018 – August 2020 · Performance management systems</p>
+    	                        <ul>
+    	                            <li>Designed and built a performance-management system using REST API architecture tied to relational databases, allowing raw data points to be ingested and viewed in daily/weekly aggregates and trend views.</li>
+    	                            <li>Used collected metrics and query outputs to recommend workflow changes, then measured the impact on throughput and utilization over time — running a data-driven feedback loop between operations and leadership.</li>
+    	                            <li>Wrote core queries and data transformations to calculate KPIs, identify bottlenecks, and feed charts and dashboards consumed by operations leadership to optimize time, work, and resource allocation.</li>
+    	                        </ul>
+    	                    </article>
+    	                </div>
+
+    	                <span class="pipeline-cap pipeline-cap--bottom">OUTPUT</span>
+    	            </div>
     	        </div>
     	    </section>
 
     	    <!-- Projects Section -->
     	    <section id="projects" class="section">
-    	        <h2 class="section-title">Recent Projects</h2>
-    	        <div class="projects-grid">
+    	        <h2 class="section-title" data-label="// 03">Recent Projects</h2>
+    	        <div class="projects-pipeline-header">
+    	            <span class="pipeline-flow-label">PIPELINE</span>
+    	        </div>
+    	        <div class="projects-grid projects-pipeline">
 					<div class="project-item reveal-on-scroll" data-project="1">
 						<div class="project-thumbnail">
 							<img src="images/thumbs/card1/vid_search.gif" alt="Keyword Video Search Screenshot">
@@ -254,8 +312,11 @@
 
     	    <!-- Contact Section -->
     	    <section id="contact" class="section">
-    	        <h2 class="section-title">Contact</h2>
+    	        <h2 class="section-title" data-label="// 04">Contact</h2>
     	        <div class="contact-container">
+    	            <div class="contact-prompt">
+    	                <span class="contact-prompt-label">$ echo "Let's build something."</span>
+    	            </div>
     	            <ul class="contact-info">
     	                <li><i class="icon fas fa-home"></i> Austin, TX</li>
     	                <li><i class="icon fas fa-mobile-alt"></i> <span class="blurred-number">361-703-7092</span></li>

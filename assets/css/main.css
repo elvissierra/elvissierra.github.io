@@ -1137,3 +1137,525 @@ code {
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
+/* =============================================================
+   REDESIGN — Data pipeline motifs & engineering accents
+   ============================================================= */
+
+/* --- Shared: JetBrains Mono utility --- */
+.mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* --- Section title prefixes --- */
+.section-title[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.52em;
+    font-weight: 400;
+    color: #4fd1c5;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.35em;
+    opacity: 0.85;
+}
+
+/* --- Nav link index prefixes --- */
+#header .nav-links a[data-index]::before {
+    content: attr(data-index) "  ";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68em;
+    color: rgba(79, 209, 197, 0.45);
+    letter-spacing: 0.04em;
+}
+
+#header .nav-links a.active[data-index]::before {
+    color: #4fd1c5;
+}
+
+/* --- Header status strip --- */
+.header-status {
+    display: flex;
+    align-items: center;
+    gap: 0.55em;
+    justify-content: center;
+    border: 1px solid rgba(79, 209, 197, 0.25);
+    border-radius: 20px;
+    padding: 0.3em 0.85em;
+    margin-bottom: 1.2em;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #4fd1c5;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.45); opacity: 0.4; }
+}
+
+.status-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68em;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+/* --- Tech tags & skill tags — monospace token style --- */
+.tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    background: #0d1117;
+    color: #4fd1c5;
+    border: 1px solid rgba(79, 209, 197, 0.25);
+    border-radius: 3px;
+    padding: 0.22em 0.65em;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.tech-tag:hover {
+    background: rgba(79, 209, 197, 0.12);
+    color: #ffffff;
+    border-color: #4fd1c5;
+    transform: translateY(-1px);
+}
+
+.skills-list li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    background: #0d1117;
+    color: #4fd1c5;
+    border: 1px solid rgba(79, 209, 197, 0.25);
+    border-radius: 3px;
+    padding: 0.35em 0.8em;
+    margin-bottom: 0.45em;
+    list-style: none;
+    cursor: default;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.skills-list li:hover {
+    background: rgba(79, 209, 197, 0.12);
+    color: #ffffff;
+    border-color: #4fd1c5;
+    transform: translateY(-1px);
+}
+
+/* keep interpersonal skills container light */
+.skills-container:last-child .skills-list li {
+    background: #edf2f7;
+    color: #2b6cb0;
+    border-color: #e2e8f0;
+}
+
+.skills-container:last-child .skills-list li:hover {
+    background: #2b6cb0;
+    color: #ffffff;
+    border-color: #2b6cb0;
+}
+
+/* --- Stats bar --- */
+.stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1em;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.5em 1em;
+    margin: 1.75em 0 1.5em;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1 1 110px;
+}
+
+.stat-number,
+.stat-suffix {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.1em;
+    font-weight: 500;
+    color: #2b6cb0;
+    display: inline;
+    line-height: 1.1;
+}
+
+.stat-suffix {
+    font-size: 1.5em;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.7em;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 0.3em;
+}
+
+/* --- Vertical pipeline — Experience section --- */
+.pipeline-track {
+    position: relative;
+    padding-left: 2.5em;
+}
+
+/* the continuous vertical pipe line */
+.pipeline-track::before {
+    content: '';
+    position: absolute;
+    left: 0.55em;
+    top: 2em;
+    bottom: 2em;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(79,209,197,0.15), rgba(79,209,197,0.4) 20%, rgba(79,209,197,0.4) 80%, rgba(79,209,197,0.15));
+    border-radius: 1px;
+}
+
+.pipeline-cap {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62em;
+    color: #4fd1c5;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.15em 0;
+    position: relative;
+    left: -1.6em;
+    opacity: 0.75;
+}
+
+.pipeline-cap--top {
+    margin-bottom: 1.2em;
+}
+
+.pipeline-cap--bottom {
+    margin-top: 1.2em;
+}
+
+.pipeline-node {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5em;
+    margin-bottom: 1.75em;
+}
+
+.pipeline-node:last-of-type {
+    margin-bottom: 0;
+}
+
+.node-dot {
+    position: absolute;
+    left: -2.15em;
+    top: 1.15em;
+    width: 11px;
+    height: 11px;
+    background: #4fd1c5;
+    border: 2px solid #f7fafc;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(79, 209, 197, 0.3);
+    z-index: 1;
+}
+
+.pipeline-node .experience-item {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* --- Domain badge on experience items --- */
+.domain-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68em;
+    color: #4fd1c5;
+    background: rgba(79, 209, 197, 0.07);
+    border: 1px solid rgba(79, 209, 197, 0.28);
+    border-radius: 3px;
+    padding: 0.15em 0.6em;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5em;
+}
+
+/* staggered reveal delays for experience nodes */
+.pipeline-node:nth-child(2) .experience-item { transition-delay: 0ms; }
+.pipeline-node:nth-child(3) .experience-item { transition-delay: 80ms; }
+.pipeline-node:nth-child(4) .experience-item { transition-delay: 160ms; }
+.pipeline-node:nth-child(5) .experience-item { transition-delay: 240ms; }
+
+/* --- Horizontal pipeline — Projects section --- */
+.projects-pipeline-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2em;
+}
+
+.pipeline-flow-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62em;
+    color: #4fd1c5;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+/* connector arrow between project cards */
+.projects-pipeline .project-item {
+    position: relative;
+}
+
+.projects-pipeline .project-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 2px;
+    background: rgba(79, 209, 197, 0.45);
+    z-index: 2;
+}
+
+/* arrowhead */
+.projects-pipeline .project-item:not(:last-child)::before {
+    content: '▶';
+    position: absolute;
+    right: -26px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.55em;
+    color: #4fd1c5;
+    opacity: 0.6;
+    z-index: 3;
+    line-height: 1;
+}
+
+/* --- Contact terminal prompt --- */
+.contact-prompt {
+    display: inline-block;
+    background: #0d1117;
+    border-left: 3px solid #4fd1c5;
+    border-radius: 4px;
+    padding: 0.65em 1.1em;
+    margin-bottom: 1.5em;
+}
+
+.contact-prompt-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-prompt-label::after {
+    content: '█';
+    color: #4fd1c5;
+    margin-left: 3px;
+    animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* --- Scroll progress bar refinement --- */
+#scroll-progress {
+    height: 2px;
+    box-shadow: 0 0 8px rgba(79, 209, 197, 0.55);
+}
+
+/* --- Responsive adjustments --- */
+@media screen and (max-width: 980px) {
+    .pipeline-track {
+        padding-left: 1.75em;
+    }
+
+    .pipeline-track::before {
+        left: 0.4em;
+    }
+
+    .node-dot {
+        left: -1.55em;
+    }
+
+    .pipeline-cap {
+        left: -1.1em;
+    }
+
+    /* on mobile, project cards stack — replace horizontal arrow with vertical */
+    .projects-pipeline .project-item:not(:last-child)::after {
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -18px;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 18px;
+    }
+
+    .projects-pipeline .project-item:not(:last-child)::before {
+        content: '▼';
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -26px;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .stats-bar {
+        gap: 0.75em;
+        padding: 1.1em 0.75em;
+    }
+
+    .stat-number {
+        font-size: 1.6em;
+    }
+}
+
+/* =============================================================
+   REFINEMENT — Sidebar visibility, bounds, pipeline cleanup
+   ============================================================= */
+
+/* Sidebar: allow internal scroll on short viewports, hide scrollbar */
+#header {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+#header::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tighten header-inner vertical padding so nav stays in view */
+#header .header-inner {
+    padding: 1.5em 0.85em 1.75em;
+}
+
+/* Compress subheadline spacing */
+#header .subheadline {
+    font-size: 0.8em;
+    line-height: 1.45;
+    margin: 0 0 0.75em;
+}
+
+/* Reduce icon-container gap above */
+#header .icon-container {
+    margin-top: 0.3em;
+}
+
+/* Status strip: tighter vertical rhythm */
+.header-status {
+    margin-bottom: 0.8em;
+    padding: 0.25em 0.75em;
+}
+
+/* Nav: pull closer to status strip, prevent text overflow at narrow widths */
+#header .nav-links {
+    margin-top: 0.75em;
+    gap: 0.1em;
+}
+
+#header .nav-links a {
+    padding: 0.5em 0.85em;
+    font-size: 0.74em;
+    letter-spacing: 0.09em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Main: only clip horizontal overflow; vertical must remain unrestricted */
+#main {
+    overflow: visible;
+    overflow-x: hidden;
+}
+
+/* Skills list: remove margin-bottom — gap on .skills-list already handles spacing */
+.skills-list li {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+/* Keep interpersonal skills li left-aligned too */
+.skills-container:last-child .skills-list li {
+    text-align: left;
+}
+
+/* --- Fix project pipeline connectors — vertical (cards are stacked, not horizontal) --- */
+.projects-pipeline {
+    gap: 3.5em;  /* wider gap gives room for the connector to breathe */
+}
+
+.projects-pipeline .project-item:not(:last-child)::after {
+    /* override: vertical line going down into the gap */
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -3.5em;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 3.5em;
+    background: linear-gradient(to bottom, rgba(79,209,197,0.4), rgba(79,209,197,0.15));
+    z-index: 2;
+}
+
+.projects-pipeline .project-item:not(:last-child)::before {
+    /* override: downward arrowhead centered in the gap */
+    content: '▼';
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -3.25em;
+    transform: translateX(-50%);
+    font-size: 0.5em;
+    color: rgba(79, 209, 197, 0.55);
+    z-index: 3;
+    line-height: 1;
+}
+
+/* Fine-tune node-dot so it sits centered on the pipe line */
+.node-dot {
+    left: -2.2em;
+}
+
+/* Mobile: ensure status strip centers correctly */
+@media screen and (max-width: 980px) {
+    .header-status {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Mobile: projects connector is already vertical — just restore full gap */
+    .projects-pipeline {
+        gap: 4em;
+    }
+
+    .projects-pipeline .project-item:not(:last-child)::after {
+        bottom: -4em;
+        height: 4em;
+    }
+
+    .projects-pipeline .project-item:not(:last-child)::before {
+        bottom: -3.6em;
+    }
+
+    /* Section title prefix: center on mobile */
+    .section-title[data-label]::before {
+        text-align: center;
+    }
+}

@@ -425,6 +425,37 @@
   sections.forEach(section => observer.observe(section));
 })();
 
+// Stats bar — animated counters
+(function () {
+    var statsBar = document.querySelector('.stats-bar');
+    if (!statsBar || !('IntersectionObserver' in window)) return;
+
+    function animateCounter(el, target, duration) {
+        var start = performance.now();
+        function step(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            el.textContent = Math.floor(eased * target);
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    var statsObs = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                document.querySelectorAll('.stat-number').forEach(function (el) {
+                    animateCounter(el, parseInt(el.dataset.target, 10), 1200);
+                });
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statsObs.observe(statsBar);
+})();
+
 (function () {
   const progressBar = document.getElementById('scroll-progress');
   if (!progressBar) return;
