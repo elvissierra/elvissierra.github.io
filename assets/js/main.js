@@ -15,13 +15,8 @@
     const footer = document.getElementById('footer');
 
     // ---------------------------------------------------------------------
-    // Preload / touch detection
+    // Touch detection
     // ---------------------------------------------------------------------
-    const settings = {
-        parallax: false,
-        parallaxFactor: 20
-    };
-
     const isMobile =
         'ontouchstart' in window ||
         (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
@@ -40,54 +35,6 @@
         window.setTimeout(function () {
             window.scrollTo(window.pageXOffset, window.pageYOffset + 1);
         }, 0);
-    }
-
-    // ---------------------------------------------------------------------
-    // Parallax header (vanilla, breakpoint-aware)
-    // ---------------------------------------------------------------------
-    if (header && settings.parallax) {
-        let parallaxEnabled = false;
-        let ticking = false;
-
-        function updateHeaderBackground(scrollY) {
-            header.style.backgroundPosition = 'center ' + (-1 * (scrollY / settings.parallaxFactor)) + 'px';
-        }
-
-        function handleScroll() {
-            const scrollY =
-                window.pageYOffset ||
-                document.documentElement.scrollTop ||
-                0;
-            updateHeaderBackground(scrollY);
-            ticking = false;
-        }
-
-        function onScroll() {
-            if (!parallaxEnabled) return;
-            if (!ticking) {
-                window.requestAnimationFrame(handleScroll);
-                ticking = true;
-            }
-        }
-
-        function updateParallaxState() {
-            // Enable parallax only on non-mobile and wider than 980px
-            const shouldEnable = !isMobile && window.innerWidth > 980;
-
-            if (shouldEnable && !parallaxEnabled) {
-                parallaxEnabled = true;
-                header.style.backgroundPosition = 'center 0px';
-                window.addEventListener('scroll', onScroll);
-                handleScroll();
-            } else if (!shouldEnable && parallaxEnabled) {
-                parallaxEnabled = false;
-                window.removeEventListener('scroll', onScroll);
-                header.style.backgroundPosition = '';
-            }
-        }
-
-        updateParallaxState();
-        window.addEventListener('resize', updateParallaxState);
     }
 
     // ---------------------------------------------------------------------
