@@ -43,19 +43,19 @@
 
     const projectsData = {
         1: [
-            { src: 'images/fulls/card1/01.gif', caption: ' Creating a new record for keyword searches.' },
-            { src: 'images/fulls/card1/02.gif', caption: ' Using a previous record to search for keywords within the video.' }
+            { src: 'images/fulls/card1/01.gif', caption: 'Creating a new record for keyword searches.' },
+            { src: 'images/fulls/card1/02.gif', caption: 'Using a previous record to search for keywords within the video.' }
         ],
         2: [
-            { src: 'images/fulls/card2/orgoverview.gif', caption: ' Organizational Layout ' },
-            { src: 'images/fulls/card2/labels.gif', caption: ' Labeling and tagging system ' },
-            { src: 'images/fulls/card2/media.gif', caption: ' Media discussions ' },
-            { src: 'images/fulls/card2/teams.gif', caption: ' Team based ' }
+            { src: 'images/fulls/card2/orgoverview.gif', caption: 'Organizational Layout' },
+            { src: 'images/fulls/card2/labels.gif', caption: 'Labeling and tagging system' },
+            { src: 'images/fulls/card2/media.gif', caption: 'Media discussions' },
+            { src: 'images/fulls/card2/teams.gif', caption: 'Team based' }
         ],
         3: [
-            { src: 'images/fulls/card3/cre8ion.gif', caption: ' Model Ranking ' },
-            { src: 'images/fulls/card3/02.gif', caption: ' Teaching AI ' },
-            { src: 'images/fulls/card3/03.gif', caption: ' Model upload and library ' }
+            { src: 'images/fulls/card3/cre8ion.gif', caption: 'Model Ranking' },
+            { src: 'images/fulls/card3/02.gif', caption: 'Teaching AI' },
+            { src: 'images/fulls/card3/03.gif', caption: 'Model upload and library' }
         ],
         4: [
             { src: 'images/fulls/card4/brainstorm.gif', caption: 'Brainstorm - Slide 1' },
@@ -231,68 +231,68 @@
     const projectTechDetails = {
         1: {
             title: 'Keyword Video Search',
-            details: '\
-                <h4>Technical Implementation</h4>\
-                <ul>\
-                    <li>Utilizes OpenAI Whisper for accurate video transcription with word-level timestamps</li>\
-                    <li>Implements indexed keyword search mapped to exact time ranges in the video</li>\
-                    <li>Python-based backend API exposed via Flask/FastAPI</li>\
-                    <li>Stores transcripts and search metadata in PostgreSQL for reuse and analysis</li>\
-                </ul>\
-                <h4>Key Technologies</h4>\
-                <ul>\
-                    <li>Python</li>\
-                    <li>Flask / FastAPI</li>\
-                    <li>OpenAI Whisper</li>\
-                    <li>PostgreSQL</li>\
-                </ul>\
-            '
+            details: `
+                <h4>Technical Implementation</h4>
+                <ul>
+                    <li>Utilizes OpenAI Whisper for accurate video transcription with word-level timestamps</li>
+                    <li>Implements indexed keyword search mapped to exact time ranges in the video</li>
+                    <li>Python-based backend API exposed via Flask/FastAPI</li>
+                    <li>Stores transcripts and search metadata in PostgreSQL for reuse and analysis</li>
+                </ul>
+                <h4>Key Technologies</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>Flask / FastAPI</li>
+                    <li>OpenAI Whisper</li>
+                    <li>PostgreSQL</li>
+                </ul>
+            `
         },
         2: {
             title: 'Media Co-Lab',
-            details: '\
-                <h4>Technical Implementation</h4>\
-                <ul>\
-                    <li>Full-stack collaboration platform for teams to upload and discuss media assets</li>\
-                    <li>Django + DRF backend exposing authenticated REST APIs</li>\
-                    <li>Vue.js SPA frontend for team views, media boards, and discussion threads</li>\
-                    <li>Supports label-based prioritization, tagging, and team-scoped permissions</li>\
-                </ul>\
-                <h4>Key Technologies</h4>\
-                <ul>\
-                    <li>Python</li>\
-                    <li>Django &amp; Django REST Framework</li>\
-                    <li>Vue.js</li>\
-                    <li>PostgreSQL</li>\
-                    <li>Docker</li>\
-                </ul>\
-            '
+            details: `
+                <h4>Technical Implementation</h4>
+                <ul>
+                    <li>Full-stack collaboration platform for teams to upload and discuss media assets</li>
+                    <li>Django + DRF backend exposing authenticated REST APIs</li>
+                    <li>Vue.js SPA frontend for team views, media boards, and discussion threads</li>
+                    <li>Supports label-based prioritization, tagging, and team-scoped permissions</li>
+                </ul>
+                <h4>Key Technologies</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>Django &amp; Django REST Framework</li>
+                    <li>Vue.js</li>
+                    <li>PostgreSQL</li>
+                    <li>Docker</li>
+                </ul>
+            `
         },
         3: {
             title: 'Cre8ion',
-            details: '\
-                <h4>Technical Implementation</h4>\
-                <ul>\
-                    <li>Web platform for sharing CAD models and managing uploads/downloads</li>\
-                    <li>Django backend for user authentication and file management</li>\
-                    <li>PostgreSQL database for storing model metadata and user info</li>\
-                    <li>3D preview using Three.js and custom STL parsing</li>\
-                </ul>\
-                <h4>Key Technologies</h4>\
-                <ul>\
-                    <li>Python</li>\
-                    <li>Django</li>\
-                    <li>PostgreSQL</li>\
-                    <li>Three.js</li>\
-                </ul>\
-            '
+            details: `
+                <h4>Technical Implementation</h4>
+                <ul>
+                    <li>Web platform for sharing CAD models and managing uploads/downloads</li>
+                    <li>Django backend for user authentication and file management</li>
+                    <li>PostgreSQL database for storing model metadata and user info</li>
+                    <li>3D preview using Three.js and custom STL parsing</li>
+                </ul>
+                <h4>Key Technologies</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>Django</li>
+                    <li>PostgreSQL</li>
+                    <li>Three.js</li>
+                </ul>
+            `
         },
         4: {
             title: 'Brainstorm',
-            details: '\
-                <h4>Coming Soon</h4>\
-                <p>Technical details will be available soon.</p>\
-            '
+            details: `
+                <h4>Coming Soon</h4>
+                <p>Technical details will be available soon.</p>
+            `
         }
     };
 
@@ -331,45 +331,47 @@
             hideModal(techModal);
         }
     });
-    // Active section highlight in side nav
+})();
+
+// Active section highlight in side nav
 (function () {
-  const sections = document.querySelectorAll('main section.section');
-  const navLinks = document.querySelectorAll('#header .nav-links .nav-link');
-  if (!sections.length || !navLinks.length) return;
+    const sections = document.querySelectorAll('main section.section');
+    const navLinks = document.querySelectorAll('#header .nav-links .nav-link');
+    if (!sections.length || !navLinks.length) return;
 
-  const navBySectionId = {};
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href') || '';
-    if (href.startsWith('#')) {
-      const id = href.slice(1);
-      navBySectionId[id] = link;
-    }
-  });
-
-  const clearActive = () => {
-    navLinks.forEach(link => link.classList.remove('active'));
-  };
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          const activeLink = navBySectionId[id];
-          if (activeLink) {
-            clearActive();
-            activeLink.classList.add('active');
-          }
+    const navBySectionId = {};
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href') || '';
+        if (href.startsWith('#')) {
+            const id = href.slice(1);
+            navBySectionId[id] = link;
         }
-      });
-    },
-    {
-      root: null,
-      threshold: 0.5
-    }
-  );
+    });
 
-  sections.forEach(section => observer.observe(section));
+    const clearActive = () => {
+        navLinks.forEach(link => link.classList.remove('active'));
+    };
+
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    const activeLink = navBySectionId[id];
+                    if (activeLink) {
+                        clearActive();
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            root: null,
+            threshold: 0.5
+        }
+    );
+
+    sections.forEach(section => observer.observe(section));
 })();
 
 // Stats bar — animated counters
@@ -403,26 +405,26 @@
     statsObs.observe(statsBar);
 })();
 
+// Scroll progress bar
 (function () {
-  const progressBar = document.getElementById('scroll-progress');
-  if (!progressBar) return;
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
 
-  const updateProgress = () => {
-    const scrollTop =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop ||
-      0;
+    const updateProgress = () => {
+        const scrollTop =
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop ||
+            0;
 
-    const docHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
+        const docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
 
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = progress + '%';
-  };
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+    };
 
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  window.addEventListener('resize', updateProgress);
-  updateProgress();
-})();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
 })();
