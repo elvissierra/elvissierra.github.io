@@ -43,25 +43,38 @@
 
     const projectsData = {
         1: [
-            { src: 'images/fulls/card1/01.gif', caption: 'Creating a new record for keyword searches.' },
-            { src: 'images/fulls/card1/02.gif', caption: 'Using a previous record to search for keywords within the video.' }
+            { src: 'images/fulls/card1/ReportingAuto1.png', caption: 'Analysis recipe builder — configure data, columns, and rules, then run a report' },
+            { src: 'images/fulls/card1/ReportingAuto2.png', caption: 'Rule setup and advanced analyses: key drivers, outliers, summary stats, time series' },
+            { src: 'images/fulls/card1/ReportingAuto3.png', caption: 'Generated report with category distributions and correlation insights' },
+            { src: 'images/fulls/card1/ReportingAuto4.png', caption: 'Crosstab insights exported alongside distribution reports' }
         ],
         2: [
-            { src: 'images/fulls/card2/orgoverview.gif', caption: 'Organizational Layout' },
-            { src: 'images/fulls/card2/labels.gif', caption: 'Labeling and tagging system' },
-            { src: 'images/fulls/card2/media.gif', caption: 'Media discussions' },
-            { src: 'images/fulls/card2/teams.gif', caption: 'Team based' }
+            { src: 'images/fulls/card2/Logger1.png', caption: 'Weekly planner with daily plan and a running project timer' },
+            { src: 'images/fulls/card2/Logger2.png', caption: 'Per-project boards tracking entries against the 40-hour week' },
+            { src: 'images/fulls/card2/Logger3.png', caption: 'Weekly log grid grouped by project' },
+            { src: 'images/fulls/card2/Logger4.png', caption: 'Dark mode' },
+            { src: 'images/fulls/card2/Logger5.png', caption: 'Quick-add entries and timers across the week' },
+            { src: 'images/fulls/card2/Logger6.png', caption: 'Project priority and notes' },
+            { src: 'images/fulls/card2/Logger7.png', caption: 'Entry editor: job title, project code, activity, and time range' }
         ],
         3: [
-            { src: 'images/fulls/card3/cre8ion.gif', caption: 'Model Ranking' },
-            { src: 'images/fulls/card3/02.gif', caption: 'Teaching AI' },
-            { src: 'images/fulls/card3/03.gif', caption: 'Model upload and library' }
+            { src: 'images/fulls/card3/ShopFloor1.png', caption: 'Operations dashboard — departments, work centers, and parts at a glance' },
+            { src: 'images/fulls/card3/ShopFloor2.png', caption: 'Interactive floor map with zones drawn per floor' },
+            { src: 'images/fulls/card3/ShopFloor3.png', caption: 'Department management with search and floor-map shortcuts' },
+            { src: 'images/fulls/card3/ShopFloor4.png', caption: 'Work centers linked to their departments' }
         ],
         4: [
-            { src: 'images/fulls/card4/brainstorm.gif', caption: 'Brainstorm - Slide 1' },
-            { src: 'images/fulls/card4/02.gif', caption: 'Brainstorm - Slide 2' },
-            { src: 'images/fulls/card4/03.gif', caption: 'Brainstorm - Slide 3' }
+            { src: 'images/fulls/card4/MediaColab2.gif', caption: 'Organizational layout' },
+            { src: 'images/fulls/card4/MediaColab3.gif', caption: 'Labeling and tagging system' },
+            { src: 'images/fulls/card4/MediaColab4.gif', caption: 'Media discussions' },
+            { src: 'images/fulls/card4/MediaColab5.gif', caption: 'Team-based views' }
         ]
+
+        // Template for next project — uncomment, fill in, and add a comma after the entry above.
+        // ,5: [
+        //     { src: 'images/fulls/card5/ProjectName1.png', caption: 'Caption for this slide' },
+        //     { src: 'images/fulls/card5/ProjectName2.png', caption: 'Caption for this slide' }
+        // ]
     };
 
     let projectSwiper = null;
@@ -230,25 +243,62 @@
 
     const projectTechDetails = {
         1: {
-            title: 'Keyword Video Search',
+            title: 'ReportingAuto',
             details: `
                 <h4>Technical Implementation</h4>
                 <ul>
-                    <li>Utilizes OpenAI Whisper for accurate video transcription with word-level timestamps</li>
-                    <li>Implements indexed keyword search mapped to exact time ranges in the video</li>
-                    <li>Python-based backend API exposed via Flask/FastAPI</li>
-                    <li>Stores transcripts and search metadata in PostgreSQL for reuse and analysis</li>
+                    <li>Recipe-driven analysis engine: configure column rules, correlations, crosstabs, and advanced analyses (key drivers, outliers, summary stats, time series)</li>
+                    <li>Runs reports over CSV inputs and emits report + insights outputs tagged with run IDs for traceability</li>
+                    <li>Recipes and headers are importable/exportable for repeatable, shareable reporting</li>
+                    <li>Pandas-based ETL, validation, and aggregation logic behind each rule</li>
                 </ul>
                 <h4>Key Technologies</h4>
                 <ul>
                     <li>Python</li>
-                    <li>Flask / FastAPI</li>
-                    <li>OpenAI Whisper</li>
-                    <li>PostgreSQL</li>
+                    <li>Pandas</li>
+                    <li>ETL pipelines</li>
                 </ul>
             `
         },
         2: {
+            title: 'Logger',
+            details: `
+                <h4>Technical Implementation</h4>
+                <ul>
+                    <li>Weekly planning and time logging: daily plan, per-project boards, and a weekly log grid</li>
+                    <li>Start/stop timers per entry with configurable increments and progress against a 40-hour week</li>
+                    <li>Projects carry priorities, notes, and structured entries (job title, project code, activity, time range)</li>
+                    <li>Django + DRF backend with a Vue.js frontend, including light/dark themes</li>
+                </ul>
+                <h4>Key Technologies</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>Django &amp; Django REST Framework</li>
+                    <li>Vue.js</li>
+                    <li>PostgreSQL</li>
+                    <li>Docker</li>
+                </ul>
+            `
+        },
+        3: {
+            title: 'ShopFloor',
+            details: `
+                <h4>Technical Implementation</h4>
+                <ul>
+                    <li>Facility management platform linking departments, work centers, and a parts catalog</li>
+                    <li>Interactive floor map for drawing zones and locating departments and work centers per floor</li>
+                    <li>Operations dashboard summarizing structure and latest activity across the facility</li>
+                    <li>Django backend with PostgreSQL persistence</li>
+                </ul>
+                <h4>Key Technologies</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>Django</li>
+                    <li>PostgreSQL</li>
+                </ul>
+            `
+        },
+        4: {
             title: 'Media Co-Lab',
             details: `
                 <h4>Technical Implementation</h4>
@@ -267,33 +317,23 @@
                     <li>Docker</li>
                 </ul>
             `
-        },
-        3: {
-            title: 'Cre8ion',
-            details: `
-                <h4>Technical Implementation</h4>
-                <ul>
-                    <li>Web platform for sharing CAD models and managing uploads/downloads</li>
-                    <li>Django backend for user authentication and file management</li>
-                    <li>PostgreSQL database for storing model metadata and user info</li>
-                    <li>3D preview using Three.js and custom STL parsing</li>
-                </ul>
-                <h4>Key Technologies</h4>
-                <ul>
-                    <li>Python</li>
-                    <li>Django</li>
-                    <li>PostgreSQL</li>
-                    <li>Three.js</li>
-                </ul>
-            `
-        },
-        4: {
-            title: 'Brainstorm',
-            details: `
-                <h4>Coming Soon</h4>
-                <p>Technical details will be available soon.</p>
-            `
         }
+
+        // Template for next project — uncomment, fill in, and add a comma after the entry above.
+        // ,5: {
+        //     title: 'ProjectName',
+        //     details: `
+        //         <h4>Technical Implementation</h4>
+        //         <ul>
+        //             <li>Brief bullet on what this project does or how it's built</li>
+        //         </ul>
+        //         <h4>Key Technologies</h4>
+        //         <ul>
+        //             <li>Tech 1</li>
+        //             <li>Tech 2</li>
+        //         </ul>
+        //     `
+        // }
     };
 
     if (techModal && techDetailsContainer) {
