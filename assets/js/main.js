@@ -43,7 +43,7 @@
 
     const projectsData = {
         1: [
-            { src: 'images/fulls/card1/ReportingAuto1.png', caption: 'Analysis recipe builder — configure data, columns, and rules, then run a report' },
+            { src: 'images/fulls/card1/ReportingAuto1.png', caption: 'Analysis recipe builder: configure data, columns, and rules, then run a report' },
             { src: 'images/fulls/card1/ReportingAuto2.png', caption: 'Rule setup and advanced analyses: key drivers, outliers, summary stats, time series' },
             { src: 'images/fulls/card1/ReportingAuto3.png', caption: 'Generated report with category distributions and correlation insights' },
             { src: 'images/fulls/card1/ReportingAuto4.png', caption: 'Crosstab insights exported alongside distribution reports' }
@@ -58,7 +58,7 @@
             { src: 'images/fulls/card2/Logger7.png', caption: 'Entry editor: job title, project code, activity, and time range' }
         ],
         3: [
-            { src: 'images/fulls/card3/ShopFloor1.png', caption: 'Operations dashboard — departments, work centers, and parts at a glance' },
+            { src: 'images/fulls/card3/ShopFloor1.png', caption: 'Operations dashboard: departments, work centers, and parts at a glance' },
             { src: 'images/fulls/card3/ShopFloor2.png', caption: 'Interactive floor map with zones drawn per floor' },
             { src: 'images/fulls/card3/ShopFloor3.png', caption: 'Department management with search and floor-map shortcuts' },
             { src: 'images/fulls/card3/ShopFloor4.png', caption: 'Work centers linked to their departments' }
@@ -265,15 +265,21 @@
             details: `
                 <h4>Technical Implementation</h4>
                 <ul>
-                    <li>Weekly planning and time logging: daily plan, per-project boards, and a weekly log grid</li>
-                    <li>Start/stop timers per entry with configurable increments and progress against a 40-hour week</li>
-                    <li>Projects carry priorities, notes, and structured entries (job title, project code, activity, time range)</li>
-                    <li>Django + DRF backend with a Vue.js frontend, including light/dark themes</li>
+                    <li>Weekly planning and time logging: daily plan, per-project boards, and a drag-and-drop weekly grid</li>
+                    <li>Start/stop timer state machine: stops the running entry, rounds its end time up to a clean increment, and starts the next entry exactly where the last one stopped, so there's no gap and no overlap</li>
+                    <li>Projects auto-provision from a typed code the first time it's used, no separate "create project" step</li>
+                    <li>FastAPI backend with a Vue 3 frontend, cookie-based auth throughout</li>
+                </ul>
+                <h4>Architecture &amp; Trade-offs</h4>
+                <ul>
+                    <li>Auth is the most production-grade part of the app: HttpOnly cookies (not localStorage) close off XSS token theft, and refresh tokens rotate on every use with reuse detection per RFC 6819, so replaying an old token burns the entire session family</li>
+                    <li>Hit and fixed a real race during development: a burst of concurrent 401s each tried to refresh independently, and the second call always looked like token reuse. Fixed with a single-flight guard so concurrent requests share one refresh call</li>
+                    <li>Honest gap, named plainly: "only one running timer per user" is enforced with a check-then-act query, not a database constraint. A real concurrency race under load, with a known fix (a partial unique index) not yet shipped</li>
                 </ul>
                 <h4>Key Technologies</h4>
                 <ul>
                     <li>Python</li>
-                    <li>Django &amp; Django REST Framework</li>
+                    <li>FastAPI</li>
                     <li>Vue.js</li>
                     <li>PostgreSQL</li>
                     <li>Docker</li>
@@ -285,15 +291,21 @@
             details: `
                 <h4>Technical Implementation</h4>
                 <ul>
-                    <li>Facility management platform linking departments, work centers, and a parts catalog</li>
-                    <li>Interactive floor map for drawing zones and locating departments and work centers per floor</li>
-                    <li>Operations dashboard summarizing structure and latest activity across the facility</li>
-                    <li>Django backend with PostgreSQL persistence</li>
+                    <li>Manufacturing execution system: departments own parts, parts get quality-checked and can carry logged defects; a second layer models work orders, routings, and bills of materials</li>
+                    <li>Floor-plan editor: click-to-draw polygon zones on an SVG plant layout, snapped to a grid, linked to real work centers and departments</li>
+                    <li>Single FastAPI + Strawberry GraphQL endpoint over 16 SQLAlchemy models, with a Vue 3 frontend</li>
+                </ul>
+                <h4>Architecture &amp; Trade-offs</h4>
+                <ul>
+                    <li>Deliberately flat GraphQL schema (no nested relational fields): every resolver is a single indexed query with zero N+1 risk, at the cost of pushing multi-entity joins onto the client</li>
+                    <li>Repository + service layer split so validation and error codes live in one place, independent of the HTTP/resolver layer</li>
+                    <li>Found via self-audit, not a live incident: the Alembic migration history hadn't been regenerated after the schema grew, so 10 of 16 tables wouldn't exist on a genuinely fresh deploy. Traced the gap, confirmed the fix was a single command away, and documented it before it could surprise anyone</li>
                 </ul>
                 <h4>Key Technologies</h4>
                 <ul>
                     <li>Python</li>
-                    <li>Django</li>
+                    <li>FastAPI &amp; GraphQL</li>
+                    <li>Vue.js</li>
                     <li>PostgreSQL</li>
                 </ul>
             `
@@ -303,10 +315,17 @@
             details: `
                 <h4>Technical Implementation</h4>
                 <ul>
-                    <li>Full-stack collaboration platform for teams to upload and discuss media assets</li>
-                    <li>Django + DRF backend exposing authenticated REST APIs</li>
-                    <li>Vue.js SPA frontend for team views, media boards, and discussion threads</li>
-                    <li>Supports label-based prioritization, tagging, and team-scoped permissions</li>
+                    <li>Multi-tenant collaboration platform: organizations contain teams, teams upload and label media, and every media item carries a comment feed plus a live WebSocket relay</li>
+                    <li>Django + DRF backend exposing authenticated REST APIs; Vue 3 SPA mirroring the resource tree via Vuex</li>
+                    <li>Two-sided human approval workflow (platform admins approve orgs, org admins approve members) gates access before any query runs</li>
+                    <li>Typed labeling system with a validated custom-type escape hatch enforced at the model layer, so every write path inherits the same invariant</li>
+                </ul>
+                <h4>Architecture &amp; Trade-offs</h4>
+                <ul>
+                    <li>Isolation is layered three ways, an approval-status gate, scoped ORM query paths back to the org, and explicit object-level ownership checks on writes, rather than resting on a single filter</li>
+                    <li>Chose Knox (server-side, revocable) over JWTs so an admin revoking access takes effect immediately, at the cost of a stateful token store</li>
+                    <li>Honest gap: the WebSocket relay doesn't yet authenticate connections. Bounded by the fact that nothing sent over the socket persists and room names are unguessable UUIDs, but it's the top item on the hardening list</li>
+                    <li>Caught and fixed a live bug via self-audit: an endpoint treated a many-to-many manager as a single object, causing a 500 on every call. Fixed, with a regression test in place</li>
                 </ul>
                 <h4>Key Technologies</h4>
                 <ul>
