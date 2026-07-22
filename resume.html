@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elvis Sierra - Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <style>
+        :root {
+            --bg: #f7fafc;
+            --paper: #ffffff;
+            --ink: #1a202c;
+            --body: #2d3748;
+            --muted: #718096;
+            --line: #e2e8f0;
+            --blue: #2b6cb0;
+            --blue-deep: #2c5282;
+            --teal: #4fd1c5;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "Inter", Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--body);
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .toolbar {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 48px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar a {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            text-decoration: none;
+            color: var(--blue);
+            border: 1px solid var(--line);
+            background: var(--paper);
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .toolbar a:hover { border-color: var(--blue); color: var(--blue-deep); }
+        .toolbar a i { margin-right: 6px; }
+
+        .page {
+            max-width: 900px;
+            margin: 20px auto 60px;
+            background: var(--paper);
+            padding: 56px 64px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(26, 32, 44, 0.06);
+        }
+
+        header.masthead {
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 22px;
+            margin-bottom: 28px;
+        }
+
+        .masthead h1 {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            line-height: 1.1;
+        }
+
+        .masthead .role {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--blue);
+            margin-top: 8px;
+            letter-spacing: 0.01em;
+        }
+
+        .masthead .contact {
+            margin-top: 14px;
+            font-size: 13.5px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+        }
+
+        .masthead .contact a { color: var(--muted); text-decoration: none; }
+        .masthead .contact a:hover { color: var(--blue); }
+        .masthead .contact span.sep { color: var(--line); }
+
+        section.block { margin-bottom: 30px; }
+
+        h2.section-label {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--blue);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .summary { font-size: 15px; color: var(--body); }
+        .summary strong { color: var(--ink); font-weight: 600; }
+
+        .competencies {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 6px 18px;
+            font-size: 14px;
+        }
+
+        .competencies dt {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .competencies dd { color: var(--body); }
+        .competencies .learning { color: var(--muted); font-style: italic; }
+
+        .job { margin-bottom: 24px; }
+        .job:last-child { margin-bottom: 0; }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .job-descriptor {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12.5px;
+            color: var(--teal-deep, #319795);
+            margin-left: 2px;
+        }
+
+        .job-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin: 3px 0 10px;
+        }
+
+        .job-company { font-size: 14px; font-weight: 600; color: var(--blue-deep); }
+        .job-dates {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+
+        ul.bullets { list-style: none; }
+
+        ul.bullets li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 7px;
+            font-size: 14px;
+            color: var(--body);
+        }
+
+        ul.bullets li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+        }
+
+        ul.bullets li strong { color: var(--ink); font-weight: 600; }
+
+        .tech-line {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 9px;
+            padding-left: 18px;
+        }
+        .tech-line span { color: var(--body); }
+
+        .project { margin-bottom: 16px; }
+        .project h3 {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .project h3 .stack {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11.5px;
+            font-weight: 400;
+            color: var(--muted);
+            margin-left: 8px;
+        }
+        .project p { font-size: 13.5px; color: var(--body); margin-top: 3px; }
+
+        .edu-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px;
+            font-size: 14px;
+        }
+        .edu-row .school { font-weight: 600; color: var(--ink); }
+        .edu-row .degree { color: var(--body); }
+
+        footer.print-note {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 0 64px;
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .page { padding: 36px 24px; }
+            .toolbar { padding: 16px 24px 0; }
+            .competencies { grid-template-columns: 1fr; }
+            .competencies dt { margin-top: 8px; }
+        }
+
+        @media print {
+            @page { margin: 14mm; }
+            body { background: #fff; font-size: 10.5pt; line-height: 1.42; }
+            .toolbar, footer.print-note { display: none; }
+            .page {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            section.block { margin-bottom: 14px; }
+            h2.section-label { page-break-after: avoid; }
+            .job, .project { page-break-inside: avoid; }
+            .masthead h1 { font-size: 24pt; }
+            a { color: inherit; text-decoration: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="toolbar">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+        <a href="#" onclick="window.print();return false;"><i class="fas fa-file-pdf"></i> Print / Save as PDF</a>
+        <a href="images/fulls/Elvis-Sierra-Resume.pdf" download><i class="fas fa-download"></i> Download PDF</a>
+    </nav>
+
+    <div class="page">
+        <header class="masthead">
+            <h1>Elvis Sierra</h1>
+            <p class="role">Software &amp; Data Engineer &nbsp;//&nbsp; Systems, Pipelines &amp; Backend Platforms</p>
+            <div class="contact">
+                <span>Austin, TX</span><span class="sep">|</span>
+                <a href="mailto:elvissierra3@gmail.com">elvissierra3@gmail.com</a><span class="sep">|</span>
+                <span>361-703-7092</span><span class="sep">|</span>
+                <a href="https://elvissierra.github.io/" target="_blank">elvissierra.io</a><span class="sep">|</span>
+                <a href="https://www.linkedin.com/in/elvis-s-296804153/" target="_blank">LinkedIn</a><span class="sep">|</span>
+                <a href="https://github.com/elvissierra" target="_blank">GitHub</a>
+            </div>
+        </header>
+
+        <section class="block">
+            <h2 class="section-label">Summary</h2>
+            <p class="summary">
+                Engineer with <strong>6+ years</strong> building and operating the systems a business decision has to
+                stand on: ETL pipelines, search and backend services, internal tooling, and the analytics layers on top
+                of them. I take an ambiguous problem and give it clear edges, deciding what to build, naming the
+                tradeoffs out loud, and owning the result from schema to shipped output. I have carried work
+                <strong>zero-to-one inside startups</strong> and hardened it inside <strong>larger, structured
+                organizations</strong>, which is why the title on the door has changed while the discipline underneath
+                it has not. What an organization gets is an engineer who treats correctness as a contract, communicates
+                in writing that outlives the conversation, and closes the loop between what a system does and what a
+                decision needs.
+            </p>
+        </section>
+
+        <section class="block">
+            <h2 class="section-label">Core Competencies</h2>
+            <dl class="competencies">
+                <dt>Languages</dt>
+                <dd>Python, SQL, JavaScript</dd>
+
+                <dt>Data &amp; Pipelines</dt>
+                <dd>ETL/ELT, Pandas, data validation and quality enforcement, data contracts, schema design, reporting automation, KPI and metric modeling, root cause analysis</dd>
+
+                <dt>Backend &amp; APIs</dt>
+                <dd>Django, Django REST Framework, FastAPI, Flask, GraphQL, REST design, token-based auth and RBAC, service-oriented architecture</dd>
+
+                <dt>Data Stores</dt>
+                <dd>PostgreSQL, MySQL, OpenSearch, Redis, AWS RDS, S3</dd>
+
+                <dt>Cloud &amp; DevOps</dt>
+                <dd>AWS (ECS, EC2, Lambda, API Gateway, CloudWatch), Docker, Airflow, Git-based CI/CD, Postman</dd>
+
+                <dt>Frontend</dt>
+                <dd>Vue.js, HTML/CSS, JavaScript SPA work</dd>
+
+                <dt>Practice</dt>
+                <dd>Zero-to-one system design, technical roadmapping, API and design specs, cross-functional KPI definition, self-audit against source</dd>
+
+                <dt>Learning</dt>
+                <dd class="learning">Snowflake, dbt, Redshift, Kubernetes, Kafka</dd>
+            </dl>
+        </section>
+
+        <section class="block">
+            <h2 class="section-label">Experience</h2>
+
+            <div class="job">
+                <div class="job-title">Quality Analyst <span class="job-descriptor">// Data Engineering &amp; Reporting Automation</span></div>
+                <div class="job-meta">
+                    <span class="job-company">Apple Maps (Contract), Austin, TX</span>
+                    <span class="job-dates">Apr 2025 &ndash; Present</span>
+                </div>
+                <ul class="bullets">
+                    <li>Own <strong>ETL pipelines</strong> that ingest file-based and relational inputs, run Python and Pandas transformations, and load structured tables built for recurring reporting and ad hoc analysis.</li>
+                    <li>Consolidated fragmented scripts into a <strong>modular Python ETL package</strong> with defined entry points, schema validation, quality enforcement, and stage-level logging, so a failure traces to the exact stage that caused it.</li>
+                    <li>Designed LLM-assisted workflows for semi-structured reporting inputs, then built the post-processing layer that validates and corrects those outputs against the relational data model. The model is the check, not the model output.</li>
+                    <li>Automated recurring reporting with <strong>Airflow-scheduled jobs</strong> that query analytical tables, compute aggregates, and populate presentation templates, eliminating <strong>16 hours per week</strong> of manual reporting.</li>
+                    <li>Partnered with reporting and operations stakeholders to define KPIs, calculation logic, and refresh cadence, so pipeline output matches the logic the decision is actually reasoned with.</li>
+                    <li>Ran exploratory analysis and data profiling to trace metric discrepancies to root cause before they reached downstream reports.</li>
+                </ul>
+                <div class="tech-line">Tech: <span>Python, SQL, Pandas, Airflow, PostgreSQL, AWS, Docker, Selenium</span></div>
+            </div>
+
+            <div class="job">
+                <div class="job-title">Software Engineer <span class="job-descriptor">// Full-Stack &amp; Backend</span></div>
+                <div class="job-meta">
+                    <span class="job-company">Media Co-Lab (Freelance), Austin, TX</span>
+                    <span class="job-dates">Mar 2024 &ndash; Jan 2025</span>
+                </div>
+                <ul class="bullets">
+                    <li>Designed a <strong>multi-tenant permission model</strong> for a collaborative media platform, layering org and team approval gates, scoped ORM query paths, and object-level ownership checks so isolation held at three independent points instead of one filter a future change could quietly break.</li>
+                    <li>Chose server-side revocable tokens over stateless JWTs so an admin revoking a member's access took effect immediately. For a B2B tool, access control has to be instant.</li>
+                    <li>Designed normalized relational schemas with the right keys, indexes, and constraints, maintained through migrations as the model evolved.</li>
+                    <li>Cut response times on heavy read paths by profiling query plans and adding targeted single and composite indexes, reducing load on the database.</li>
+                    <li>Ran a self-audit of the codebase against its own documentation before a technical review, found a live bug in the uploads endpoint, fixed it, and adopted "verify against source, not docs" as a standing habit.</li>
+                </ul>
+                <div class="tech-line">Tech: <span>Python, Django, DRF, JavaScript, Vue.js, PostgreSQL, Redis, Docker, GraphQL</span></div>
+            </div>
+
+            <div class="job">
+                <div class="job-title">Senior Backend Engineer <span class="job-descriptor">// Search &amp; Backend Systems</span></div>
+                <div class="job-meta">
+                    <span class="job-company">ThinkOnward (Startup), Austin, TX</span>
+                    <span class="job-dates">Sep 2022 &ndash; Feb 2024</span>
+                </div>
+                <ul class="bullets">
+                    <li>Built an <strong>async, event-driven ingestion pipeline</strong> where Lambda parsed S3 files, extracted structured fields, and indexed <strong>100K documents into OpenSearch</strong>, with a field-mapping redesign that prevented drift and preserved lineage.</li>
+                    <li>Cut query time on core reporting endpoints from <strong>8 seconds to under 1 second</strong> by redesigning index mappings and query shapes.</li>
+                    <li>Led <strong>zero-to-one system design</strong> from greenfield, turning ambiguous product goals into technical roadmaps with real boundaries and holding engineering, product, and customer-facing teams aligned as the architecture moved.</li>
+                    <li>Built a geospatial polygon system tied to the OpenSearch index for well-location queries.</li>
+                    <li>Wrote the backend API and design specs covering data flows, contracts, and failure modes for teams who were not in the room when the decisions were made.</li>
+                    <li>Ran containerized services on AWS with Git-based CI/CD (builds, schema migrations, automated testing), keeping rapid iteration from costing system stability.</li>
+                </ul>
+                <div class="tech-line">Tech: <span>Python, Django, PostgreSQL, OpenSearch, AWS (ECS, EC2, Lambda, S3), Docker, GraphQL, Airflow</span></div>
+            </div>
+
+            <div class="job">
+                <div class="job-title">Independent Contractor <span class="job-descriptor">// Backend &amp; Data Engineering</span></div>
+                <div class="job-meta">
+                    <span class="job-company">Freelance Software Development, Austin, TX</span>
+                    <span class="job-dates">Aug 2020 &ndash; Sep 2022</span>
+                </div>
+                <ul class="bullets">
+                    <li>Delivered backend and data engineering for small clients and early-stage products, building internal tooling and services in Python, Django, and AWS.</li>
+                </ul>
+                <div class="tech-line">Tech: <span>Python, Django, AWS, PostgreSQL</span></div>
+            </div>
+
+            <div class="job">
+                <div class="job-title">Software Engineer <span class="job-descriptor">// Performance &amp; Analytics Systems</span></div>
+                <div class="job-meta">
+                    <span class="job-company">Caterpillar Inc., Victoria, TX</span>
+                    <span class="job-dates">Mar 2018 &ndash; Aug 2020</span>
+                </div>
+                <ul class="bullets">
+                    <li>Designed and built a <strong>REST API-backed performance-management system</strong> that introduced traceability to factory workflows, ingesting raw data points once and exposing them as daily and weekly aggregates and trend views.</li>
+                    <li>Wrote the SQL transformation layer behind throughput, quality, and cost metrics, feeding the charts and dashboards operations leadership used to allocate time, work, and resources.</li>
+                    <li>Ran root cause analysis through KPI decomposition, trend analysis, and anomaly detection, then recommended workflow changes and measured the effect: <strong>65% improvement in measured output quality</strong> and a <strong>50% cut in rework resource usage</strong>.</li>
+                    <li>Defined requirements with QA and environmental teams so the system measured what the operation actually needed.</li>
+                </ul>
+                <div class="tech-line">Tech: <span>Python, Flask, SQL, MySQL, HTML/CSS, AWS</span></div>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2 class="section-label">Selected Projects</h2>
+
+            <div class="project">
+                <h3>ReportingAuto <span class="stack">Python, Pandas, ETL</span></h3>
+                <p>A recipe-driven reporting engine. Column rules and analyses (correlations, crosstabs, outliers, time series) are configured once; every report after that runs itself, each output tagged with a run ID so it traces back to the recipe that produced it.</p>
+            </div>
+
+            <div class="project">
+                <h3>Logger <span class="stack">FastAPI, Vue.js, PostgreSQL, Docker</span></h3>
+                <p>A full-stack time tracker whose real work is the auth layer: HttpOnly-cookie sessions, refresh tokens that rotate on every use with reuse detection per RFC 6819, and a single-flight guard so a burst of concurrent requests cannot log a valid session out.</p>
+            </div>
+
+            <div class="project">
+                <h3>ShopFloor <span class="stack">FastAPI, GraphQL, PostgreSQL, Vue.js</span></h3>
+                <p>A manufacturing execution and quality-tracking system, work orders, routings, bills of materials, and a click-to-draw floor-plan editor over an SVG plant map, sitting behind one typed GraphQL API over 16 SQLAlchemy models with a deliberately flat, N+1-free schema.</p>
+            </div>
+
+            <div class="project">
+                <h3>Media Co-Lab <span class="stack">Django, DRF, Vue.js, PostgreSQL, Docker</span></h3>
+                <p>A multi-tenant media collaboration platform where organizations contain teams, every item carries a comment feed and a live WebSocket relay, and tenant isolation is held by a three-layer permission model rather than a single query filter.</p>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2 class="section-label">Education</h2>
+            <div class="edu-row">
+                <span class="school">University of Houston&ndash;Victoria</span>
+                <span class="degree">Associate of Applied Science in Engineering</span>
+            </div>
+        </section>
+    </div>
+
+    <footer class="print-note">
+        Use "Print / Save as PDF" above, or the downloadable PDF linked from the portfolio, for a print-ready copy.
+    </footer>
+</body>
+
+</html>
