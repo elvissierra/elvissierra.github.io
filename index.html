@@ -26,8 +26,8 @@
                     alt="Elvis Sierra - Data &amp; Analytics Engineer"
                     class="avatar">
                 <h1>Elvis Sierra</h1>
-                <p class="headline">Data &amp; Analytics Engineer</p>
-                <p class="subheadline">I build ETL pipelines, search services, and analytics tools that raw data has to survive intact.</p>
+                <p class="headline">Software &amp; Data Engineer</p>
+                <p class="subheadline">Applied AI, pipelines, and backend platforms. I build the systems, and the AI agents on top of them, that a business decision has to stand on.</p>
                 <div class="icon-container">
                     <ul class="icons">
                         <li>
@@ -71,27 +71,31 @@
                 <div class="content-container">
                     <h2 class="section-title" data-label="// 01">About Me</h2>
                     <p>
-                        Software and data engineer with 6+ years of experience, starting as a zero-to-one system
-                        builder in startups and moving into data engineering inside larger, more structured
-                        organizations. What carried over is the habit of taking an ambiguous problem and turning it
-                        into a system with clear edges: ETL pipelines, search services, internal analytics tools,
-                        the kind of infrastructure a business decision can actually stand on.
+                        Engineer with 6+ years building and operating the systems a business decision has to stand
+                        on: ETL pipelines, search and backend services, internal tooling, production AI agents and
+                        workflow automation, and the analytics layers on top of them. I take an ambiguous problem
+                        and give it clear edges, deciding what to build, naming the tradeoffs out loud, and owning
+                        the result from problem framing to shipped output. I've carried work zero-to-one inside
+                        startups and hardened it inside larger, structured organizations, which is why the title on
+                        the door has changed while the discipline underneath it hasn't.
 
-                        At Apple Maps I build internal tools for data curation, validation, correction, and
-                        summarization, where the bar is simple: an output either holds up under scrutiny or it
-                        doesn't. I work directly with the people who define the metrics, so the logic in the
-                        pipeline matches the logic they're reasoning with.
+                        At Apple Maps I design and ship internal AI agents alongside the ETL pipelines that back
+                        them, where the bar is simple: an output either holds up under scrutiny or it doesn't. I
+                        work directly with the people who define the metrics, so the logic in the pipeline matches
+                        the logic they're reasoning with, and I treat correctness as a contract, not a suggestion.
                     </p>
                     <div class="skills-row">
                         <div class="skills-container">
                             <h3>Technical Skills</h3>
                             <ul class="skills-list">
                                 <li>Python · SQL · JavaScript</li>
+                                <li>AI agent &amp; skill design · LLM tooling · agentic workflow automation</li>
                                 <li>Pandas · ETL · data validation · reporting automation</li>
                                 <li>Selenium · Keynote automation · Excel</li>
                                 <li>Django · FastAPI · Flask · Vue.js · GraphQL</li>
-                                <li>PostgreSQL · MySQL · OpenSearch · AWS RDS · S3</li>
-                                <li>AWS (ECS, EC2, Lambda, API Gateway, CloudWatch) · Docker · Git · Postman</li>
+                                <li>Token-based auth &amp; RBAC · service-oriented architecture</li>
+                                <li>PostgreSQL · MySQL · OpenSearch · Redis · AWS RDS · S3</li>
+                                <li>AWS (ECS, EC2, Lambda, API Gateway, CloudWatch) · Docker · Airflow · Git · Postman</li>
                             </ul>
                         </div>
                         <div class="skills-container">
@@ -142,12 +146,13 @@
                                 <h3 class="experience-role">Quality Analyst – Apple Maps</h3>
                                 <p class="experience-meta">April 2025 – Present · AI agents, ETL &amp; internal reporting</p>
                                 <ul>
-                                    <li>Own ETL pipelines that take in file-based and relational inputs, run them through Python/Pandas transformations, and load them into structured tables built for recurring reporting and ad hoc analysis.</li>
-                                    <li>Consolidated a set of fragmented scripts into a modular Python package with defined ETL entrypoints, schema validation, and stage-level logging so a failure can be traced to the exact stage that caused it.</li>
-                                    <li>Designed LLM-assisted workflows for semi-structured reporting inputs, then built the post-processing pipelines that validate and correct those outputs against the relational data model. The model is the check, not the LLM.</li>
-                                    <li>Built the validation and correction layer that catches LLM-generated data before it reaches downstream reporting, applying rule-based transformations and schema alignment as a data contract.</li>
-                                    <li>Worked directly with reporting and operations stakeholders on KPI definitions, calculation logic, and refresh cadence, so pipeline output matches what the decision actually needs.</li>
-                                    <li>Replaced manual spreadsheet reporting by scheduling Python jobs that query analytical tables, compute aggregates, and populate Keynote templates on their own.</li>
+                                    <li>Designed and shipped 7 internal AI agents and reusable skills spanning professional writing, repository analysis, automation review, KPI identification, structured brainstorming, and spreadsheet and slide-deck generation, cutting an estimated 4 hours of manual work per day across the team.</li>
+                                    <li>Own the technical direction end to end, from problem framing and agent design through iteration in production, and lead enablement by demoing tools and spreading AI workflow patterns the rest of the team now reuses.</li>
+                                    <li>Own ETL pipelines that ingest file-based and relational inputs, run Python and Pandas transformations, and load structured tables built for recurring reporting and ad hoc analysis.</li>
+                                    <li>Consolidated fragmented scripts into a modular Python ETL package with defined entry points, schema validation, quality enforcement, and stage-level logging, so a failure traces to the exact stage that caused it.</li>
+                                    <li>Designed LLM-assisted workflows for semi-structured reporting inputs, then built the post-processing layer that validates and corrects those outputs against the relational data model. The model is the check, not the model output.</li>
+                                    <li>Automated recurring reporting with Airflow-scheduled jobs that query analytical tables, compute aggregates, and populate presentation templates, eliminating 16 hours per week of manual reporting.</li>
+                                    <li>Partnered with reporting and operations stakeholders to define KPIs, calculation logic, and refresh cadence, so pipeline output matches the logic the decision is actually reasoned with.</li>
                                 </ul>
                             </article>
                         </div>
@@ -160,7 +165,9 @@
                                 <p class="experience-meta">March 2024 – January 2025 · Backend &amp; AI integration</p>
                                 <ul>
                                     <li>Designed a multi-tenant permission model for a collaborative media platform, layering org/team approval gates, scoped ORM query paths, and explicit object-level ownership checks so isolation held at three independent points instead of one filter a future change could quietly break.</li>
+                                    <li>Integrated an API-backed AI assistant into onboarding flows, persisting request and response metadata in relational tables to drive in-app guidance.</li>
                                     <li>Chose server-side revocable tokens (Knox) over stateless JWTs so an org admin revoking a member's access took effect immediately, not on the token's own schedule. For a B2B tool, access control has to be instant.</li>
+                                    <li>Designed normalized relational schemas with the right keys, indexes, and constraints, maintained through migrations as the model evolved, then cut response times on heavy read paths by profiling query plans and adding targeted single and composite indexes.</li>
                                     <li>Ran a self-directed audit of the codebase against its own documentation before a technical review and found a live bug in the uploads endpoint. Fixed it, and adopted "verify against source, not docs" as a habit going forward.</li>
                                 </ul>
                             </article>
@@ -173,11 +180,25 @@
                                 <h3 class="experience-role">Senior Backend Engineer – ThinkOnward</h3>
                                 <p class="experience-meta">September 2022 – February 2024 · Backend systems &amp; data flows</p>
                                 <ul>
-                                    <li>Increased search relevance and coverage by redesigning the indexing pipelines and mappings, normalizing and preprocessing source data so it stopped drifting and dropping, which cut time-to-answer and lifted the quality of what surfaced.</li>
+                                    <li>Built an async, event-driven ingestion pipeline where Lambda parsed S3 files, extracted structured fields, and indexed 100K documents into OpenSearch, with a field-mapping redesign that prevented drift and preserved lineage.</li>
+                                    <li>Cut query time on core reporting endpoints from 8 seconds to under 1 second by redesigning index mappings and query shapes.</li>
                                     <li>Led zero-to-one ("moonshot") system design in a startup, taking ambiguous product goals and turning them into technical roadmaps with real boundaries, then holding engineering, product, and customer-facing teams aligned as the architecture moved.</li>
+                                    <li>Built a geospatial polygon system tied to the OpenSearch index for well-location queries.</li>
                                     <li>Worked directly with product and customers to find real use cases, shaped LLM-backed features and backend systems around what those cases actually needed, and fed interaction data back into the next iteration.</li>
                                     <li>Wrote the backend documentation and API specs that laid out data flows, contracts, and failure modes for teams who weren't in the room when the decisions were made.</li>
                                     <li>Ran containerized services in a startup environment, owning AWS infrastructure and Git-based CI/CD, and kept rapid iteration from costing system stability.</li>
+                                </ul>
+                            </article>
+                        </div>
+
+                        <div class="pipeline-node">
+                            <div class="node-dot"></div>
+                            <article class="experience-item reveal-on-scroll">
+                                <span class="domain-badge">Backend &amp; Data Engineering</span>
+                                <h3 class="experience-role">Software Engineer – Freelance</h3>
+                                <p class="experience-meta">August 2020 – September 2022 · Backend &amp; data engineering</p>
+                                <ul>
+                                    <li>Delivered backend and data engineering for small clients and early-stage products, building internal tooling and pipelines in Python, Django, and AWS.</li>
                                 </ul>
                             </article>
                         </div>
@@ -192,6 +213,7 @@
                                     <li>Designed and built a performance-management system on a REST API tied to relational databases, so raw data points could be ingested once and viewed as daily and weekly aggregates and trend lines.</li>
                                     <li>Used the metrics and query output to recommend workflow changes, then measured the effect on throughput and utilization over time, closing the loop between what operations did and what leadership saw.</li>
                                     <li>Wrote the core queries and transformations behind the KPIs, found the bottlenecks in the data, and fed the charts and dashboards operations leadership used to allocate time, work, and resources.</li>
+                                    <li>Ran root cause analysis through KPI decomposition, trend analysis, and anomaly detection, then recommended workflow changes: a 65% improvement in measured output quality and a 50% cut in rework resource usage.</li>
                                 </ul>
                             </article>
                         </div>
