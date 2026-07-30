@@ -274,7 +274,7 @@
     <div class="page">
         <header class="masthead">
             <h1>Elvis Sierra</h1>
-            <p class="role">Software &amp; Data Engineer &nbsp;//&nbsp; Systems, Pipelines &amp; Backend Platforms</p>
+            <p class="role">Software &amp; Data Engineer &nbsp;//&nbsp; Applied AI, Pipelines &amp; Backend Platforms</p>
             <div class="contact">
                 <span>Austin, TX</span><span class="sep">|</span>
                 <a href="mailto:elvissierra3@gmail.com">elvissierra3@gmail.com</a><span class="sep">|</span>
@@ -289,14 +289,14 @@
             <h2 class="section-label">Summary</h2>
             <p class="summary">
                 Engineer with <strong>6+ years</strong> building and operating the systems a business decision has to
-                stand on: ETL pipelines, search and backend services, internal tooling, and the analytics layers on top
-                of them. I take an ambiguous problem and give it clear edges, deciding what to build, naming the
-                tradeoffs out loud, and owning the result from schema to shipped output. I have carried work
-                <strong>zero-to-one inside startups</strong> and hardened it inside <strong>larger, structured
-                organizations</strong>, which is why the title on the door has changed while the discipline underneath
-                it has not. What an organization gets is an engineer who treats correctness as a contract, communicates
-                in writing that outlives the conversation, and closes the loop between what a system does and what a
-                decision needs.
+                stand on: ETL pipelines, search and backend services, internal tooling, <strong>production AI agents
+                and workflow automation</strong>, and the analytics layers on top of them. I take an ambiguous problem
+                and give it clear edges, deciding what to build, naming the tradeoffs out loud, and owning the result
+                from problem framing to shipped output. I have carried work <strong>zero-to-one inside startups</strong>
+                and hardened it inside <strong>larger, structured organizations</strong>, which is why the title on the
+                door has changed while the discipline underneath it has not. What an organization gets is an engineer
+                who treats correctness as a contract, drives adoption by making tools practical for the people who use
+                them, and closes the loop between what a system does and what a decision needs.
             </p>
         </section>
 
@@ -305,6 +305,9 @@
             <dl class="competencies">
                 <dt>Languages</dt>
                 <dd>Python, SQL, JavaScript</dd>
+
+                <dt>AI &amp; Agents</dt>
+                <dd>AI agent and skill design, agentic and automation workflows, LLM tooling, prompt design, repository analysis, KPI identification, AI enablement and adoption</dd>
 
                 <dt>Data &amp; Pipelines</dt>
                 <dd>ETL/ELT, Pandas, data validation and quality enforcement, data contracts, schema design, reporting automation, KPI and metric modeling, root cause analysis</dd>
@@ -324,8 +327,8 @@
                 <dt>Practice</dt>
                 <dd>Zero-to-one system design, technical roadmapping, API and design specs, cross-functional KPI definition, self-audit against source</dd>
 
-                <dt>Learning</dt>
-                <dd class="learning">Snowflake, dbt, Redshift, Kubernetes, Kafka</dd>
+                <dt>Expanding into</dt>
+                <dd class="learning">dbt (staging / intermediate / mart modeling, incremental builds, data tests), Airflow orchestration with Cosmos, Snowflake, Redshift</dd>
             </dl>
         </section>
 
@@ -333,30 +336,32 @@
             <h2 class="section-label">Experience</h2>
 
             <div class="job">
-                <div class="job-title">Quality Analyst <span class="job-descriptor">// Data Engineering &amp; Reporting Automation</span></div>
+                <div class="job-title">Quality Analyst <span class="job-descriptor">// AI Agents, Data Engineering &amp; Reporting Automation</span></div>
                 <div class="job-meta">
                     <span class="job-company">Apple Maps (Contract), Austin, TX</span>
                     <span class="job-dates">Apr 2025 &ndash; Present</span>
                 </div>
                 <ul class="bullets">
+                    <li>Designed and shipped <strong>7 internal AI agents and reusable skills</strong> spanning professional writing, repository analysis, automation review, KPI identification, structured brainstorming, and spreadsheet and slide-deck generation, cutting an estimated <strong>4 hours of manual work per day</strong> across the team.</li>
+                    <li>Own the technical direction end to end, from problem framing and agent design through iteration in production, and lead enablement by demoing tools and spreading AI workflow patterns the rest of the team now reuses.</li>
                     <li>Own <strong>ETL pipelines</strong> that ingest file-based and relational inputs, run Python and Pandas transformations, and load structured tables built for recurring reporting and ad hoc analysis.</li>
                     <li>Consolidated fragmented scripts into a <strong>modular Python ETL package</strong> with defined entry points, schema validation, quality enforcement, and stage-level logging, so a failure traces to the exact stage that caused it.</li>
                     <li>Designed LLM-assisted workflows for semi-structured reporting inputs, then built the post-processing layer that validates and corrects those outputs against the relational data model. The model is the check, not the model output.</li>
                     <li>Automated recurring reporting with <strong>Airflow-scheduled jobs</strong> that query analytical tables, compute aggregates, and populate presentation templates, eliminating <strong>16 hours per week</strong> of manual reporting.</li>
                     <li>Partnered with reporting and operations stakeholders to define KPIs, calculation logic, and refresh cadence, so pipeline output matches the logic the decision is actually reasoned with.</li>
-                    <li>Ran exploratory analysis and data profiling to trace metric discrepancies to root cause before they reached downstream reports.</li>
                 </ul>
-                <div class="tech-line">Tech: <span>Python, SQL, Pandas, Airflow, PostgreSQL, AWS, Docker, Selenium</span></div>
+                <div class="tech-line">Tech: <span>Python, SQL, AI agents &amp; skills, LLM tooling, Pandas, Airflow, PostgreSQL, AWS, Docker, Selenium</span></div>
             </div>
 
             <div class="job">
-                <div class="job-title">Software Engineer <span class="job-descriptor">// Full-Stack &amp; Backend</span></div>
+                <div class="job-title">Software Engineer <span class="job-descriptor">// Freelance, Backend &amp; AI Integration</span></div>
                 <div class="job-meta">
-                    <span class="job-company">Media Co-Lab (Freelance), Austin, TX</span>
+                    <span class="job-company">Freelance Software Development, Austin, TX</span>
                     <span class="job-dates">Mar 2024 &ndash; Jan 2025</span>
                 </div>
                 <ul class="bullets">
                     <li>Designed a <strong>multi-tenant permission model</strong> for a collaborative media platform, layering org and team approval gates, scoped ORM query paths, and object-level ownership checks so isolation held at three independent points instead of one filter a future change could quietly break.</li>
+                    <li>Integrated an <strong>API-backed AI assistant</strong> into onboarding flows, persisting request and response metadata in relational tables to drive in-app guidance.</li>
                     <li>Chose server-side revocable tokens over stateless JWTs so an admin revoking a member's access took effect immediately. For a B2B tool, access control has to be instant.</li>
                     <li>Designed normalized relational schemas with the right keys, indexes, and constraints, maintained through migrations as the model evolved.</li>
                     <li>Cut response times on heavy read paths by profiling query plans and adding targeted single and composite indexes, reducing load on the database.</li>
@@ -383,19 +388,19 @@
             </div>
 
             <div class="job">
-                <div class="job-title">Independent Contractor <span class="job-descriptor">// Backend &amp; Data Engineering</span></div>
+                <div class="job-title">Software Engineer <span class="job-descriptor">// Freelance, Backend &amp; Data Engineering</span></div>
                 <div class="job-meta">
                     <span class="job-company">Freelance Software Development, Austin, TX</span>
                     <span class="job-dates">Aug 2020 &ndash; Sep 2022</span>
                 </div>
                 <ul class="bullets">
-                    <li>Delivered backend and data engineering for small clients and early-stage products, building internal tooling and services in Python, Django, and AWS.</li>
+                    <li>Delivered backend and data engineering for small clients and early-stage products, building internal tooling and pipelines in Python, Django, and AWS.</li>
                 </ul>
                 <div class="tech-line">Tech: <span>Python, Django, AWS, PostgreSQL</span></div>
             </div>
 
             <div class="job">
-                <div class="job-title">Software Engineer <span class="job-descriptor">// Performance &amp; Analytics Systems</span></div>
+                <div class="job-title">Team Lead / Software Engineer <span class="job-descriptor">// Performance Management &amp; Analytics</span></div>
                 <div class="job-meta">
                     <span class="job-company">Caterpillar Inc., Victoria, TX</span>
                     <span class="job-dates">Mar 2018 &ndash; Aug 2020</span>
