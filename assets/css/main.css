@@ -1025,11 +1025,27 @@ code {
 
 @media screen and (max-width: 736px) {
 	#header {
+		position: static;
+		width: 100%;
+		height: auto;
 		padding: 2.25em 1.5em;
 		background-size: cover;
 	}
 
+	#header .nav-links {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	#header .nav-links a {
+		white-space: normal;
+		text-overflow: clip;
+	}
+
 	#main {
+		margin-left: 0;
+		width: 100%;
 		padding: 2.25em 1.5em 0.25em 1.5em;
 	}
 	.projects-grid {
@@ -1057,7 +1073,7 @@ code {
 
 @media screen and (max-width: 480px) {
 	#header {
-		padding: 4.5em 1.5em;
+		padding: 2.25em 1.5em;
 	}
 }
 
