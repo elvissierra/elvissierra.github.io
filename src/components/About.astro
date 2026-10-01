@@ -1,0 +1,66 @@
+---
+const stats = [
+	{ value: '6+', label: 'years experience' },
+	{ value: '4', label: 'production projects' },
+	{ value: '3', label: 'companies shipped at' },
+	{ value: '5+', label: 'ETL pipelines owned' },
+];
+
+const skills = [
+	{ group: 'Languages', items: 'Python, SQL, JavaScript' },
+	{ group: 'AI & agents', items: 'AI agent and skill design, agentic and automation workflows, LLM tooling, prompt design' },
+	{ group: 'Data & pipelines', items: 'ETL/ELT, Pandas, data validation and quality enforcement, schema design, reporting automation, KPI and metric modeling' },
+	{ group: 'Backend & APIs', items: 'Django, DRF, FastAPI, Flask, GraphQL, REST design, token-based auth and RBAC' },
+	{ group: 'Data stores', items: 'PostgreSQL, MySQL, OpenSearch, Redis, AWS RDS, S3' },
+	{ group: 'Cloud & DevOps', items: 'AWS (ECS, EC2, Lambda, API Gateway, CloudWatch), Docker, Airflow, Git-based CI/CD' },
+	{ group: 'Frontend', items: 'Vue.js, HTML/CSS, JavaScript SPAs' },
+	{ group: 'Expanding into', items: 'dbt, Airflow with Cosmos, Snowflake, Redshift' },
+];
+---
+
+<section id="about" class="border-t border-line px-4 py-16 sm:px-6 sm:py-20">
+	<div class="mx-auto max-w-5xl">
+		<h2 class="font-mono text-xs uppercase tracking-[0.12em] text-accent">About</h2>
+		<div class="mt-6 grid gap-12 lg:grid-cols-[3fr_2fr]">
+			<div class="space-y-5 text-[1.05rem] leading-relaxed">
+				<p>
+					I've spent 6+ years on the part of the stack people mostly notice when it breaks: ETL
+					pipelines, search and backend services, internal tooling, production AI agents and workflow
+					automation, and the analytics layers sitting on top. Before I write anything I look at the
+					whole board, what feeds what, what I can touch and what I shouldn't, and give an ambiguous
+					problem clear edges. It's the same as working on my truck. Take apart too much and I waste
+					time and break something, take apart too little and I waste time and break something. I map
+					the steps first, then move.
+				</p>
+				<p>
+					I've carried work zero-to-one inside startups and hardened it inside larger, structured
+					organizations. The title on the door has changed. The discipline underneath it hasn't.
+				</p>
+				<p>
+					At Apple Maps I design and ship internal AI agents alongside the ETL pipelines that back
+					them, where an output either holds up under scrutiny or it doesn't. I work directly with the
+					people who define the metrics, so the logic in the pipeline matches the logic they reason
+					with. I treat correctness as a contract.
+				</p>
+			</div>
+			<dl class="grid grid-cols-2 gap-px self-start overflow-hidden rounded-2xl border border-line bg-line">
+				{stats.map((stat) => (
+					<div class="bg-surface px-5 py-6">
+						<dt class="sr-only">{stat.label}</dt>
+						<dd class="text-3xl font-semibold text-ink">{stat.value}</dd>
+						<dd class="mt-1 text-sm text-muted">{stat.label}</dd>
+					</div>
+				))}
+			</dl>
+		</div>
+		<h3 class="mt-16 font-mono text-xs uppercase tracking-[0.12em] text-muted">Toolbox</h3>
+		<dl class="mt-4 divide-y divide-line border-y border-line">
+			{skills.map((skill) => (
+				<div class="grid gap-1 py-3 sm:grid-cols-[11rem_1fr] sm:gap-6">
+					<dt class="font-mono text-sm text-ink">{skill.group}</dt>
+					<dd class="text-sm">{skill.items}</dd>
+				</div>
+			))}
+		</dl>
+	</div>
+</section>

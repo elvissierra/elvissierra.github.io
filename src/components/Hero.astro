@@ -1,0 +1,56 @@
+---
+const profiles = [
+	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/elvis-s-296804153' },
+	{ label: 'GitHub', href: 'https://github.com/elvissierra' },
+];
+---
+
+<section class="px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-36">
+	<div class="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[1fr_auto] md:gap-16">
+		<div>
+			<p class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 font-mono text-xs text-muted">
+				<span class="h-2 w-2 rounded-full bg-accent" aria-hidden="true"></span> available for new roles
+			</p>
+			<h1 class="mt-6 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">Elvis Sierra</h1>
+			<p class="mt-2 font-mono text-sm text-accent">Software &amp; Data Engineer · Austin, TX</p>
+			<p class="mt-6 max-w-2xl text-lg leading-relaxed">
+				I build the systems a business decision has to stand on: ETL pipelines, search and backend
+				services, internal tooling, and the AI agents running on top of them. If the output doesn't
+				hold up, nothing downstream does.
+			</p>
+			<div class="mt-8 flex flex-wrap items-center gap-3">
+				<a
+					href="mailto:elvissierra3@gmail.com"
+					class="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-bg transition-opacity hover:opacity-90"
+				>
+					Email me
+				</a>
+				<a
+					href="/resume"
+					class="rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent"
+				>
+					Resume
+				</a>
+				{profiles.map((profile) => (
+					<a
+						href={profile.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="px-2 py-2.5 text-sm text-muted underline-offset-4 hover:text-ink hover:underline"
+					>
+						{profile.label}
+					</a>
+				))}
+			</div>
+		</div>
+		<img
+			src="/images/avatar.png"
+			srcset="/images/avatar-small.jpg 480w, /images/avatar-medium.jpg 800w, /images/avatar.png 1200w"
+			sizes="(min-width: 768px) 256px, 160px"
+			alt="Portrait of Elvis Sierra"
+			width="256"
+			height="235"
+			class="order-first h-40 w-40 rounded-full border border-line object-cover md:order-none md:h-64 md:w-64"
+		/>
+	</div>
+</section>

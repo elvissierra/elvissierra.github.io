@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Elvis Sierra | Software & Data Engineer',
+	description = 'Elvis Sierra, software and data engineer in Austin, TX. ETL pipelines, search and backend services, internal tooling, and production AI agents.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	'@id': `${Astro.site}#elvis`,
+	name: 'Elvis Sierra',
+	jobTitle: 'Software & Data Engineer',
+	url: Astro.site?.toString(),
+	email: 'mailto:elvissierra3@gmail.com',
+	address: { '@type': 'PostalAddress', addressLocality: 'Austin', addressRegion: 'TX' },
+	sameAs: [
+		'https://www.linkedin.com/in/elvis-s-296804153',
+		'https://github.com/elvissierra',
+		'https://refinery-st.app',
+	],
+	knowsAbout: [
+		'Python',
+		'SQL',
+		'ETL pipelines',
+		'Data engineering',
+		'Backend engineering',
+		'AI agents',
+		'OpenSearch',
+		'AWS',
+	],
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Elvis Sierra" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={new URL('/images/avatar-medium.jpg', Astro.site)} />
+		<link rel="canonical" href={canonical} />
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+	</head>
+	<body class="bg-bg text-body font-sans antialiased">
+		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-surface focus:px-3 focus:py-2 focus:text-ink">
+			Skip to content
+		</a>
+		<Nav />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
