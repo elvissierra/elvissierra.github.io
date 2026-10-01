@@ -1,7 +1,7 @@
 # elvissierra.github.io
 
 Personal software engineering portfolio for Elvis Sierra. Astro + Tailwind, built to
-static files and served as Cloudflare Workers static assets (Worker `elvis-portfolio`).
+static files and deployed to GitHub Pages at https://elvissierra.github.io.
 Studio work (CAD, 3D printing, product design) lives on refinery.st, not here.
 
 ## Structure
@@ -33,6 +33,7 @@ Add `src/content/projects/<slug>.md` (copy an existing one), drop its images in
 
 ## Deployment
 
-Workers Builds runs `npm run build` and `npx wrangler deploy` on push to `main`.
-Until cutover, the old GitHub Pages site is still served from `main`; this rebuild
-lives on the `astro-rebuild` branch.
+`.github/workflows/deploy.yml` builds the site with `withastro/action` and publishes
+it to GitHub Pages on every push to `main`. The repo's Pages source must be set to
+"GitHub Actions" (Settings → Pages); with "Deploy from a branch" Pages would serve
+the raw source instead of the build.

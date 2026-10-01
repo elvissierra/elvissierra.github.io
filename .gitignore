@@ -20,6 +20,3 @@ npm-debug.log*
 CLAUDE.md
 .claude/
 
-# wrangler local state and secrets
-.wrangler/
-.dev.vars

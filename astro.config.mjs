@@ -4,8 +4,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
-// Fully static build, served as Cloudflare Workers static assets (see wrangler.jsonc).
-// TODO: switch `site` to the portfolio's custom domain once it is attached to the Worker.
+// Fully static build, deployed to GitHub Pages by .github/workflows/deploy.yml.
 export default defineConfig({
   site: 'https://elvissierra.github.io',
 
